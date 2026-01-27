@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation - Challenge 2026</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="doc.css">
+</head>
+<body class="page-light">
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <span class="brand-text">ManiSkill-ViTac Challenge 2026</span>
+                </a>
+            </div>
+            <!-- <div class="nav-links">
+                <a href="doc.html" class="nav-link nav-link-doc active">Documentation</a>
+                <a href="index.html#news" class="nav-link" data-nav="news">News</a>
+                <div class="nav-item-dropdown">
+                    <span class="nav-link">Past Challenges</span>
+                    <div class="nav-dropdown-menu">
+                        <a href="https://ai-workshops.github.io/maniskill-vitac-challenge-2025/" target="_blank" class="nav-dropdown-link">
+                            ManiSkill‑ViTac 2025 <small>(ICRA 2025)</small>
+                        </a>
+                        <a href="https://ai-workshops.github.io/maniskill-vitac-challenge-2024/" target="_blank" class="nav-dropdown-link">
+                            ManiSkill‑ViTac 2024 <small>(ICRA/CVPR 2024)</small>
+                        </a>
+                    </div>
+                </div>
+                <a href="index.html#registration" class="nav-link">Registration</a>
+            </div> -->
+        </div>
+    </nav>
+
+    <div class="doc-layout">
+        <aside class="doc-sidebar">
+            <div class="sidebar-content">
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Documentation</h3>
+                    <ul class="sidebar-menu">
+                        <li><a href="#overview" class="sidebar-link active">Overview</a></li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+
+        <main class="doc-content">
+            <div class="content-wrapper">
+                <h1 class="doc-main-title">ManiSkill‑ViTac Challenge 2026</h1>
+
+                <section id="overview" class="doc-section">
+                    <h2 class="doc-heading">
+                        <span class="heading-icon">📘</span>
+                        Overview
+                    </h2>
+                    <p class="doc-paragraph">
+                        This page summarizes the key information of the ManiSkill‑ViTac challenge: motivation, tracks,
+                        tasks, schedule, hardware requirements and participation rules. It is intended as a quick
+                        reference for teams who already know the basic idea of the competition.
+                    </p>
+                    <p class="doc-paragraph">
+                        For full details, please refer to the sections below (Tracks and Tasks, Evaluation &amp; Scoring,
+                        etc.) and the official technical manual that will be released before the competition.
+                    </p>
+                </section>
+
+                <!-- Everything below Overview will be updated later with full details
+                     (tracks, tasks, evaluation, schedule, venue, rules, etc.). -->
+            </div>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© ManiSkill-ViTac Challenge 2026. Thanks to all contributors and collaborators.</p>
+        </div>
+    </footer>
+
+    <script src="news-indicator.js"></script>
+    <script>
+        document.querySelectorAll('.sidebar-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        const sections = document.querySelectorAll('.doc-section');
+        const sidebarLinks = document.querySelectorAll('.sidebar-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            sidebarLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
