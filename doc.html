@@ -15,24 +15,30 @@
                     <span class="brand-text">ManiSkill-ViTac Challenge 2026</span>
                 </a>
             </div>
-            <!-- <div class="nav-links">
-                <a href="doc.html" class="nav-link nav-link-doc active">Documentation</a>
-                <a href="index.html#news" class="nav-link" data-nav="news">News</a>
-                <div class="nav-item-dropdown">
-                    <span class="nav-link">Past Challenges</span>
-                    <div class="nav-dropdown-menu">
-                        <a href="https://ai-workshops.github.io/maniskill-vitac-challenge-2025/" target="_blank" class="nav-dropdown-link">
-                            ManiSkill‑ViTac 2025 <small>(ICRA 2025)</small>
-                        </a>
-                        <a href="https://ai-workshops.github.io/maniskill-vitac-challenge-2024/" target="_blank" class="nav-dropdown-link">
-                            ManiSkill‑ViTac 2024 <small>(ICRA/CVPR 2024)</small>
-                        </a>
-                    </div>
-                </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.html#leaderboard" class="nav-link">LeaderBoard</a>
                 <a href="index.html#registration" class="nav-link">Registration</a>
-            </div> -->
+                <a href="index.html#contact" class="nav-link">Contact</a>
+                <a href="doc.html" class="nav-link nav-link-doc">Doc</a>
+            </div>
         </div>
     </nav>
+
+    <section class="doc-hero">
+        <div class="doc-hero-background"></div>
+        <div class="container">
+            <p class="doc-hero-kicker">Official Documentation</p>
+            <h1 class="doc-hero-title">ManiSkill-ViTac Challenge 2026</h1>
+            <p class="doc-hero-subtitle">
+                AI for Science themed challenge documentation covering rules, track definitions, evaluation logic, timeline and registration structure.
+            </p>
+            <div class="doc-hero-actions">
+                <a href="index.html#registration" class="btn btn-primary">Go to Registration</a>
+                <a href="index.html#leaderboard" class="btn btn-secondary">View LeaderBoard</a>
+            </div>
+        </div>
+    </section>
 
     <div class="doc-layout">
         <aside class="doc-sidebar">
@@ -41,6 +47,14 @@
                     <h3 class="sidebar-title">Documentation</h3>
                     <ul class="sidebar-menu">
                         <li><a href="#overview" class="sidebar-link active">Overview</a></li>
+                        <li><a href="#format" class="sidebar-link">Format</a></li>
+                        <li><a href="#tracks" class="sidebar-link">Tracks</a></li>
+                        <li><a href="#evaluation" class="sidebar-link">Evaluation</a></li>
+                        <li><a href="#timeline" class="sidebar-link">Timeline</a></li>
+                        <li><a href="#registration" class="sidebar-link">Registration</a></li>
+                        <li><a href="#resources" class="sidebar-link">Resources</a></li>
+                        <li><a href="#hardware" class="sidebar-link">Hardware</a></li>
+                        <li><a href="#open-issues" class="sidebar-link">Open Issues</a></li>
                     </ul>
                 </div>
             </div>
@@ -48,7 +62,13 @@
 
         <main class="doc-content">
             <div class="content-wrapper">
-                <h1 class="doc-main-title">ManiSkill‑ViTac Challenge 2026</h1>
+                <div class="doc-intro-card">
+                    <p class="doc-intro-label">Challenge Manual</p>
+                    <h1 class="doc-main-title">ManiSkill-ViTac Challenge 2026</h1>
+                    <p class="doc-intro-text">
+                        This page is the central reference for the AI for Science themed challenge structure, task scope, evaluation criteria and operational planning notes currently available to participants.
+                    </p>
+                </div>
 
                 <section id="overview" class="doc-section">
                     <h2 class="doc-heading">
@@ -56,18 +76,259 @@
                         Overview
                     </h2>
                     <p class="doc-paragraph">
-                        This page summarizes the key information of the ManiSkill‑ViTac challenge: motivation, tracks,
-                        tasks, schedule, hardware requirements and participation rules. It is intended as a quick
-                        reference for teams who already know the basic idea of the competition.
+                        ManiSkill-ViTac Challenge 2026 focuses on contact-rich bimanual manipulation with visual and tactile sensing,
+                        with an application emphasis on laboratory-style embodied manipulation. The current planning materials highlight
+                        AI for Science style tasks that require dexterous control, stable contact and reliable execution under varying materials and tools.
                     </p>
                     <p class="doc-paragraph">
-                        For full details, please refer to the sections below (Tracks and Tasks, Evaluation &amp; Scoring,
-                        etc.) and the official technical manual that will be released before the competition.
+                        Compared with last year's page, the 2026 edition is being organized around a clearer participant journey:
+                        understand the benchmark, register a team, submit an early proposal package, iterate with released data and baselines,
+                        then enter the formal evaluation cycle and final workshop presentation.
                     </p>
+                    <div class="doc-note">
+                        This documentation reflects the latest planning notes currently available. Items marked as pending are intentionally
+                        left flexible until the final public rulebook is released.
+                    </div>
                 </section>
 
-                <!-- Everything below Overview will be updated later with full details
-                     (tracks, tasks, evaluation, schedule, venue, rules, etc.). -->
+                <section id="format" class="doc-section">
+                    <h2 class="doc-heading">
+                        <span class="heading-icon">🧭</span>
+                        Challenge Format
+                    </h2>
+                    <div class="doc-card-grid">
+                        <article class="doc-card">
+                            <h3 class="doc-subheading">Stage A: Registration and Proposal</h3>
+                            <p class="doc-paragraph">
+                                Teams first register through a Google Form style signup flow and prepare basic proof materials or a short proposal
+                                before the first screening deadline.
+                            </p>
+                        </article>
+                        <article class="doc-card">
+                            <h3 class="doc-subheading">Stage B: Preparation and Iteration</h3>
+                            <p class="doc-paragraph">
+                                Organizers release dataset examples, training baselines, tutorials and system documentation so teams can begin development
+                                before the formal submission stage.
+                            </p>
+                        </article>
+                        <article class="doc-card">
+                            <h3 class="doc-subheading">Stage C: Formal Evaluation</h3>
+                            <p class="doc-paragraph">
+                                Teams enter the official evaluation loop with real-time feedback and a limited number of submission opportunities,
+                                followed by final result announcement and workshop presentation.
+                            </p>
+                        </article>
+                    </div>
+                    <ul class="doc-list">
+                        <li><strong>Early screening:</strong> planning notes suggest a proposal review window in late April to early May 2026.</li>
+                        <li><strong>Offline testing target:</strong> internal notes mention a first-stage deadline before May 1, 2026 for offline testing readiness and supporting materials.</li>
+                        <li><strong>Evaluation quota:</strong> a real-time evaluation phase with up to 5 attempts is currently under consideration.</li>
+                    </ul>
+                </section>
+
+                <section id="tracks" class="doc-section">
+                    <h2 class="doc-heading">
+                        <span class="heading-icon">🧪</span>
+                        Tracks
+                    </h2>
+                    <p class="doc-paragraph">
+                        The 2026 edition is organized around two concrete laboratory manipulation tracks. This section summarizes the task content of each track.
+                    </p>
+
+                    <h3 class="doc-subheading">Track 1: Test Tube Pick and Place + Cleaning</h3>
+                    <div class="doc-callout">
+                        <strong>Task content:</strong> complete test tube pick-and-place, insertion and cleaning tasks in laboratory settings.
+                    </div>
+                    <ul class="doc-list">
+                        <li>Test tube pick and place or insertion tasks</li>
+                        <li>Internal tube cleaning with a brush</li>
+                    </ul>
+
+                    <h3 class="doc-subheading">Track 2: Grinding Operation</h3>
+                    <div class="doc-callout">
+                        <strong>Task content:</strong> complete grinding tasks with mortar-and-pestle style tools in laboratory settings.
+                    </div>
+                    <ul class="doc-list">
+                        <li>Grinding tasks with laboratory tools and materials</li>
+                        <li>Mortar-and-pestle style tool use</li>
+                    </ul>
+                </section>
+
+                <section id="evaluation" class="doc-section">
+                    <h2 class="doc-heading">
+                        <span class="heading-icon">📏</span>
+                        Evaluation and Scoring
+                    </h2>
+                    <p class="doc-paragraph">
+                        The current planning document proposes a multi-factor evaluation instead of success rate alone. This better matches the laboratory
+                        setting, where speed, stability and material safety all matter.
+                    </p>
+                    <div class="doc-card-grid doc-card-grid-two">
+                        <article class="doc-card">
+                            <h3 class="doc-subheading">Core Metrics</h3>
+                            <ul class="doc-list">
+                                <li>Task completion accuracy</li>
+                                <li>Completion time</li>
+                                <li>Operational stability</li>
+                                <li>Whether drops, spills or damage occur</li>
+                                <li>Robustness to difficult cases and disturbances</li>
+                            </ul>
+                        </article>
+                        <article class="doc-card">
+                            <h3 class="doc-subheading">Practical Interpretation</h3>
+                            <ul class="doc-list">
+                                <li>Fast but unstable behavior should not dominate the ranking.</li>
+                                <li>Material-sensitive tasks should penalize spills or destructive interactions.</li>
+                                <li>Generalization across vessel sizes, materials and contents is expected to matter.</li>
+                            </ul>
+                        </article>
+                    </div>
+                </section>
+
+                <section id="timeline" class="doc-section">
+                    <h2 class="doc-heading">
+                        <span class="heading-icon">🗓️</span>
+                        Tentative Timeline
+                    </h2>
+                    <div class="doc-timeline">
+                        <div class="doc-timeline-item">
+                            <div class="doc-timeline-date">Jan 25, 2026</div>
+                            <div class="doc-timeline-body">Website release.</div>
+                        </div>
+                        <div class="doc-timeline-item">
+                            <div class="doc-timeline-date">Early April 2026</div>
+                            <div class="doc-timeline-body">First batch of dataset examples planned for release.</div>
+                        </div>
+                        <div class="doc-timeline-item">
+                            <div class="doc-timeline-date">Early April 2026</div>
+                            <div class="doc-timeline-body">Planning note mentions at least 200 samples per category plus data documentation and visualization code.</div>
+                        </div>
+                        <div class="doc-timeline-item">
+                            <div class="doc-timeline-date">May 1, 2026</div>
+                            <div class="doc-timeline-body">Proposal screening for qualifying teams.</div>
+                        </div>
+                        <div class="doc-timeline-item">
+                            <div class="doc-timeline-date">Around May 1, 2026</div>
+                            <div class="doc-timeline-body">Baseline leaderboard target date mentioned in the preparation notes.</div>
+                        </div>
+                        <div class="doc-timeline-item">
+                            <div class="doc-timeline-date">Jun 3-4, 2026</div>
+                            <div class="doc-timeline-body">Workshop and award ceremony at the CVPR 2026 Embodied AI Workshop in Denver.</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="registration" class="doc-section">
+                    <h2 class="doc-heading">
+                        <span class="heading-icon">📝</span>
+                        Registration Design
+                    </h2>
+                    <p class="doc-paragraph">
+                        The planning notes recommend a Google Form based registration channel. The public signup page has not been released yet,
+                        but the intended form structure is already clear enough to document.
+                    </p>
+
+                    <h3 class="doc-subheading">Team Information</h3>
+                    <ul class="doc-list">
+                        <li>Team name</li>
+                        <li>Team size, suggested range 1-5</li>
+                        <li>Participating track selection: Track 1 for test tube pick and place plus cleaning, or Track 2 for grinding</li>
+                    </ul>
+
+                    <h3 class="doc-subheading">Team Leader Information</h3>
+                    <ul class="doc-list">
+                        <li>Full name</li>
+                        <li>Email address</li>
+                        <li>Affiliation or institution</li>
+                        <li>Country or region</li>
+                    </ul>
+
+                    <h3 class="doc-subheading">Team Members</h3>
+                    <ul class="doc-list">
+                        <li>Repeated member fields for Member 2 to Member 5, or a simplified email list field</li>
+                        <li>Name, email and affiliation for each additional member</li>
+                    </ul>
+
+                    <h3 class="doc-subheading">Background and Compliance</h3>
+                    <ul class="doc-list">
+                        <li>Career stage: PhD student, postdoc, faculty, industry or other</li>
+                        <li>Prior experience with tactile sensing or bimanual manipulation</li>
+                        <li>How the team heard about the challenge</li>
+                        <li>Agreement with challenge rules and code of conduct</li>
+                        <li>Confirmation that all team members agree to participate</li>
+                        <li>Optional hardware support or kit loan request</li>
+                        <li>Optional brief description of the planned approach</li>
+                    </ul>
+
+                    <div class="doc-note">
+                        The registration page on the website can safely expose this structure now, even if the final Google Form link is still pending.
+                    </div>
+                </section>
+
+                <section id="resources" class="doc-section">
+                    <h2 class="doc-heading">
+                        <span class="heading-icon">📦</span>
+                        Resources to Be Released
+                    </h2>
+                    <div class="doc-card-grid doc-card-grid-two">
+                        <article class="doc-card">
+                            <h3 class="doc-subheading">Competition Assets</h3>
+                            <ul class="doc-list">
+                                <li>Rulebook and challenge document</li>
+                                <li>GitHub site and code repository</li>
+                                <li>Training baseline and starter tutorial</li>
+                                <li>Dataset examples</li>
+                                <li>Baseline leaderboard</li>
+                            </ul>
+                        </article>
+                        <article class="doc-card">
+                            <h3 class="doc-subheading">System Documentation</h3>
+                            <ul class="doc-list">
+                                <li>Hardware composition</li>
+                                <li>Assembly instructions</li>
+                                <li>Robot information</li>
+                                <li>Tactile sensor information</li>
+                                <li>Open-source support documents</li>
+                            </ul>
+                        </article>
+                    </div>
+                </section>
+
+                <section id="hardware" class="doc-section">
+                    <h2 class="doc-heading">
+                        <span class="heading-icon">🔧</span>
+                        Hardware and Materials Snapshot
+                    </h2>
+                    <p class="doc-paragraph">
+                        The planning notes already identify example objects and consumables for the laboratory tasks. These are useful as an early signal
+                        of the intended manipulation regime, although the final public procurement list may still change.
+                    </p>
+                    <ul class="doc-list">
+                        <li><strong>Test tubes:</strong> multiple diameters, including 18 mm, 25 mm and 50 mm categories.</li>
+                        <li><strong>Tube racks and brushes:</strong> both handled and non-handled brushes are being considered for cleaning tasks.</li>
+                        <li><strong>Grinding setups:</strong> ceramic and glass mortar-and-pestle variants across different sizes.</li>
+                        <li><strong>Materials:</strong> calcium carbonate particles, gypsum, quartz sand, activated carbon and copper sulfate solution appear in the draft equipment list.</li>
+                    </ul>
+                    <div class="doc-callout">
+                        The website should describe categories of equipment, not internal shopping links. This page intentionally summarizes the task-relevant
+                        objects without publishing internal procurement notes.
+                    </div>
+                </section>
+
+                <section id="open-issues" class="doc-section">
+                    <h2 class="doc-heading">
+                        <span class="heading-icon">⏳</span>
+                        Open Issues
+                    </h2>
+                    <ul class="doc-list">
+                        <li>Final number of participating teams</li>
+                        <li>Whether proof materials are mandatory for all teams</li>
+                        <li>Exact proposal screening rules and dates</li>
+                        <li>Hardware preparation format and possible lab access</li>
+                        <li>Whether remote-only preparation is supported</li>
+                        <li>Whether hardware loan will be offered, and under what constraints</li>
+                    </ul>
+                </section>
             </div>
         </main>
     </div>
@@ -100,7 +361,6 @@
             let current = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
                 if (window.pageYOffset >= sectionTop - 200) {
                     current = section.getAttribute('id');
                 }
