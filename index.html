@@ -18,6 +18,7 @@
                 <a href="#overview" class="nav-link">Overview</a>
                 <a href="#format" class="nav-link">Format</a>
                 <a href="#tracks" class="nav-link">Tracks</a>
+                <a href="#visualization" class="nav-link">Visualization</a>
                 <a href="#leaderboard" class="nav-link">LeaderBoard</a>
                 <a href="#timeline" class="nav-link">Timeline</a>
                 <a href="#awards" class="nav-link">Award</a>
@@ -26,7 +27,9 @@
                 <a href="#contact" class="nav-link">Contact</a>
                 <a href="doc.html" class="nav-link nav-link-doc">Doc</a>
                 <div class="nav-item-dropdown nav-item-highlight">
-                    <span class="nav-link">Past Challenges</span>
+                    <button type="button" class="nav-link nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">
+                        Past Challenges
+                    </button>
                     <div class="nav-dropdown-menu">
                         <a href="https://ai-workshops.github.io/maniskill-vitac-challenge-2025/" target="_blank" class="nav-dropdown-link" rel="noreferrer">
                             ManiSkill-ViTac Challenge 2025
@@ -231,78 +234,86 @@
                 </div>
             </section>
 
-            <section class="resources-section">
-                <h2 class="section-title" id="resources">Resources</h2>
-                <div class="resource-grid">
-                    <a href="doc.html" class="resource-card">
-                        <span class="resource-type">Documentation</span>
-                        <h3>Challenge Manual</h3>
-                        <p>Track descriptions, evaluation notes and future technical instructions will live in the documentation page.</p>
-                    </a>
-                    <a href="#news" class="resource-card">
-                        <span class="resource-type">Updates</span>
-                        <h3>Announcement Feed</h3>
-                        <p>Use the news section as the canonical source for releases, deadlines and official timeline changes.</p>
-                    </a>
-                    <a href="https://discord.com/invite/YD7xBydau4" target="_blank" rel="noreferrer" class="resource-card">
-                        <span class="resource-type">Community</span>
-                        <h3>Discord Support</h3>
-                        <p>Join the server for technical support, clarifications and discussion with organizers and participants.</p>
-                    </a>
-                    <a href="https://ai-workshops.github.io/maniskill-vitac-challenge-2025/" target="_blank" rel="noreferrer" class="resource-card">
-                        <span class="resource-type">Reference</span>
-                        <h3>2025 Challenge Archive</h3>
-                        <p>Review last year's format, tracks, awards and winners for context while preparing for the 2026 edition.</p>
-                    </a>
+            <section class="visualization-section">
+                <h2 class="section-title" id="visualization">Visualization Workbench</h2>
+                <p class="section-lead">
+                    Embedded challenge data playback.
+                </p>
+                <div class="rerun-embed-card">
+                    <div id="rerun-viewer-host" class="rerun-viewer-host"></div>
                 </div>
             </section>
 
-            <section class="leaderboard-section">
+            <section class="leaderboard-section leaderboard-showcase">
                 <h2 class="section-title" id="leaderboard">LeaderBoard</h2>
                 <p class="section-lead">
                     Each track will report the official evaluation score together with the current baseline result.
                 </p>
-                <div class="leaderboard-grid">
-                    <article class="leaderboard-card">
+                <div class="leaderboard-grid leaderboard-track-grid">
+                    <article class="leaderboard-card leaderboard-track-card">
                         <span class="leaderboard-tag">Track 1</span>
                         <h3>Test Tube Pick and Place + Cleaning</h3>
-                        <div class="leaderboard-metrics">
-                            <div class="leaderboard-metric">
-                                <span class="leaderboard-metric-label">Evaluation Score</span>
-                                <strong class="leaderboard-metric-value">Coming soon</strong>
-                            </div>
-                            <div class="leaderboard-metric">
-                                <span class="leaderboard-metric-label">Baseline</span>
-                                <strong class="leaderboard-metric-value">Coming soon</strong>
-                            </div>
+                        <p>Official evaluation results for the tube manipulation and cleaning track.</p>
+                        <div class="leaderboard-card-table-wrap">
+                            <table class="leaderboard-card-table">
+                                <thead>
+                                    <tr>
+                                        <th>Rank</th>
+                                        <th>Team Name</th>
+                                        <th>Model</th>
+                                        <th>Score</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>TBA</td>
+                                        <td>Coming soon</td>
+                                        <td>Coming soon</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Baseline</td>
+                                        <td>Official Baseline</td>
+                                        <td>Coming soon</td>
+                                        <td>Coming soon</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
-                        <div class="leaderboard-status">Track 1 public results pending</div>
+                        <p class="leaderboard-status">Updated: May 2026</p>
                     </article>
-                    <article class="leaderboard-card">
+                    <article class="leaderboard-card leaderboard-track-card">
                         <span class="leaderboard-tag">Track 2</span>
                         <h3>Grinding Operation</h3>
-                        <div class="leaderboard-metrics">
-                            <div class="leaderboard-metric">
-                                <span class="leaderboard-metric-label">Evaluation Score</span>
-                                <strong class="leaderboard-metric-value">Coming soon</strong>
-                            </div>
-                            <div class="leaderboard-metric">
-                                <span class="leaderboard-metric-label">Baseline</span>
-                                <strong class="leaderboard-metric-value">Coming soon</strong>
-                            </div>
+                        <p>Official evaluation results for the laboratory grinding track.</p>
+                        <div class="leaderboard-card-table-wrap">
+                            <table class="leaderboard-card-table">
+                                <thead>
+                                    <tr>
+                                        <th>Rank</th>
+                                        <th>Team Name</th>
+                                        <th>Model</th>
+                                        <th>Score</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>TBA</td>
+                                        <td>Coming soon</td>
+                                        <td>Coming soon</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Baseline</td>
+                                        <td>Official Baseline</td>
+                                        <td>Coming soon</td>
+                                        <td>Coming soon</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
-                        <div class="leaderboard-status">Track 2 public results pending</div>
+                        <p class="leaderboard-status">Updated: May 2026</p>
                     </article>
-                </div>
-                <div class="leaderboard-panel">
-                    <p>
-                        The public board is currently planned to show each track separately. Once evaluation is active, you can replace the placeholders
-                        above with real scores and baseline numbers.
-                    </p>
-                    <div class="callout-actions">
-                        <a href="doc.html" class="btn btn-primary">View Doc</a>
-                        <a href="#timeline" class="btn btn-secondary">See Timeline</a>
-                    </div>
                 </div>
             </section>
 
@@ -352,26 +363,28 @@
 
             <section class="awards-section">
                 <h2 class="section-title" id="awards">Awards</h2>
-                <p class="section-lead">Sponsored by Lightwheel</p>
-                <p class="section-lead">Top 1-3 teams in the Simulation Challenge will receive cash prizes.</p>
-                <div class="award-grid">
-                    <article class="award-card">
-                        <span class="leaderboard-tag">Simulation Challenge Award</span>
-                        <h3>1st Place</h3>
-                        <p class="award-amount">$2,000</p>
-                        <p>Cash award for the top-ranked team in the simulation challenge.</p>
+                <p class="section-lead">Top 1-3 teams will receive cash prizes.</p>
+                <div class="award-showcase">
+                    <article class="award-showcase-row">
+                        <div class="award-showcase-copy">
+                            <span class="award-place">1st Place</span>
+                            <p>Cash award for the top-ranked team.</p>
+                        </div>
+                        <p class="award-showcase-amount">$2,000</p>
                     </article>
-                    <article class="award-card">
-                        <span class="leaderboard-tag">Simulation Challenge Award</span>
-                        <h3>2nd Place</h3>
-                        <p class="award-amount">$1,000</p>
-                        <p>Cash award for the second-ranked team in the simulation challenge.</p>
+                    <article class="award-showcase-row">
+                        <div class="award-showcase-copy">
+                            <span class="award-place">2nd Place</span>
+                            <p>Cash award for the second-ranked team.</p>
+                        </div>
+                        <p class="award-showcase-amount">$1,000</p>
                     </article>
-                    <article class="award-card">
-                        <span class="leaderboard-tag">Simulation Challenge Award</span>
-                        <h3>3rd Place</h3>
-                        <p class="award-amount">$500</p>
-                        <p>Cash award for the third-ranked team in the simulation challenge.</p>
+                    <article class="award-showcase-row">
+                        <div class="award-showcase-copy">
+                            <span class="award-place">3rd Place</span>
+                            <p>Cash award for the third-ranked team.</p>
+                        </div>
+                        <p class="award-showcase-amount">$500</p>
                     </article>
                 </div>
             </section>
@@ -391,35 +404,58 @@
             <section class="registration-section">
                 <h2 class="section-title" id="registration">Registration</h2>
                 <p class="section-lead">
-                    This section is designed to become the main action hub for teams. Once the public links are ready, replace the placeholder buttons below.
+                    Fill in the form below to register your team. After registration, you will receive follow-up information for proposal submission, support materials and community discussion.
                 </p>
-                <div class="registration-grid">
-                    <article class="registration-card">
-                        <span class="leaderboard-tag">Step 1</span>
-                        <h3>Register Your Team</h3>
-                        <p>Open the official team registration form, provide team and leader information, and select your track.</p>
-                        <a href="doc.html" class="btn btn-primary">Registration Form Soon</a>
-                    </article>
-                    <article class="registration-card">
-                        <span class="leaderboard-tag">Step 2</span>
-                        <h3>Submit Proposal</h3>
-                        <p>Prepare your proposal or readiness materials for the early screening stage and upload them through the official channel.</p>
-                        <a href="doc.html#registration" class="btn btn-secondary">Proposal Link Soon</a>
-                    </article>
-                    <article class="registration-card">
-                        <span class="leaderboard-tag">Step 3</span>
-                        <h3>Join Community Support</h3>
-                        <p>Use Discord as the primary support channel for questions about rules, data, evaluation and updates.</p>
-                        <a href="https://discord.com/invite/YD7xBydau4" target="_blank" rel="noreferrer" class="btn btn-news">Join Discord</a>
-                    </article>
+
+                <div class="registration-meta-cards">
+                    <div class="reg-meta-card">
+                        <span class="reg-meta-icon">🗓️</span>
+                        <div>
+                            <div class="reg-meta-label">Registration Deadline</div>
+                            <div class="reg-meta-value">May 1, 2026</div>
+                        </div>
+                    </div>
+                    <div class="reg-meta-card">
+                        <span class="reg-meta-icon">🧪</span>
+                        <div>
+                            <div class="reg-meta-label">Challenge Tracks</div>
+                            <div class="reg-meta-value">Track 1 · Track 2</div>
+                        </div>
+                    </div>
+                    <div class="reg-meta-card">
+                        <span class="reg-meta-icon">🏆</span>
+                        <div>
+                            <div class="reg-meta-label">Workshop</div>
+                            <div class="reg-meta-value">CVPR 2026 · Jun 3–4</div>
+                        </div>
+                    </div>
+                    <div class="reg-meta-card">
+                        <span class="reg-meta-icon">💬</span>
+                        <div>
+                            <div class="reg-meta-label">Community</div>
+                            <div class="reg-meta-value"><a href="https://discord.com/invite/YD7xBydau4" target="_blank" rel="noreferrer">Join Discord</a></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="callout-card registration-note-card">
-                    <h3>Planned form fields are already defined.</h3>
-                    <p>
-                        The registration form is expected to collect team name, team size, participating track, leader information, member information,
-                        background details and compliance confirmations. Proposal instructions and the final submission checklist will be published
-                        together with the official links.
-                    </p>
+
+                <div class="registration-form-outer">
+                    <div class="registration-form-header">
+                        <span class="reg-form-badge">Official Registration</span>
+                        <h3 class="reg-form-title">ManiSkill-ViTac Challenge 2026 — Team Registration</h3>
+                        <p class="reg-form-subtitle">Complete all fields. The team leader will receive a confirmation email after submission.</p>
+                    </div>
+                    <div class="registration-form-wrap">
+                        <iframe
+                            src="https://docs.google.com/forms/d/e/1FAIpQLSfh7qOZzdL4BpHt9RyqVVD3OX1meqCdPUTmUbwya0vOD-jf1A/viewform?embedded=true"
+                            width="100%"
+                            height="4892"
+                            frameborder="0"
+                            marginheight="0"
+                            marginwidth="0"
+                            title="ManiSkill-ViTac Challenge 2026 Registration Form">
+                            Loading…
+                        </iframe>
+                    </div>
                 </div>
             </section>
 
@@ -517,6 +553,12 @@
                         </div>
                         <div class="team-member">
                             <div class="member-avatar">
+                                <img src="imgs/Mujun_Ji.jpg" alt="Mujun Ji">
+                            </div>
+                            <div class="member-name">Mujun Ji</div>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-avatar">
                                 <img src="imgs/Wenxuan_Ma.jpg" alt="Wenxuan Ma">
                             </div>
                             <div class="member-name">Wenxuan Ma</div>
@@ -583,7 +625,61 @@
         document.addEventListener('DOMContentLoaded', function() {
             updateAllRelativeTimes();
             setInterval(updateAllRelativeTimes, 60000);
+
+            const dropdown = document.querySelector('.nav-item-dropdown');
+            const dropdownTrigger = dropdown?.querySelector('.nav-dropdown-trigger');
+
+            if (dropdown && dropdownTrigger) {
+                dropdownTrigger.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    const isOpen = dropdown.classList.toggle('is-open');
+                    dropdownTrigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+                });
+
+                document.addEventListener('click', function(event) {
+                    if (!dropdown.contains(event.target)) {
+                        dropdown.classList.remove('is-open');
+                        dropdownTrigger.setAttribute('aria-expanded', 'false');
+                    }
+                });
+
+                document.addEventListener('keydown', function(event) {
+                    if (event.key === 'Escape') {
+                        dropdown.classList.remove('is-open');
+                        dropdownTrigger.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            }
         });
+    </script>
+    <script type="module">
+        const host = document.getElementById('rerun-viewer-host');
+        const CHALLENGE_RRD_URL = new URL('./episodes_0_3_7.rrd', window.location.href).href;
+        let viewer = null;
+
+        async function loadViewer() {
+            if (!host) return;
+            const { WebViewer } = await import('https://esm.sh/@rerun-io/web-viewer@0.30.2');
+
+            if (viewer) {
+                viewer.stop();
+                host.innerHTML = '';
+            }
+
+            viewer = new WebViewer();
+
+            if (!CHALLENGE_RRD_URL) {
+                return;
+            }
+
+            await viewer.start(CHALLENGE_RRD_URL, host, { width: '100%', height: '720px' });
+        }
+
+        if (host) {
+            loadViewer().catch(error => {
+                console.error(error);
+            });
+        }
     </script>
 </body>
 </html>

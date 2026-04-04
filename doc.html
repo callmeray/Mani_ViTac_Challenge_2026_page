@@ -31,7 +31,7 @@
             <p class="doc-hero-kicker">Official Documentation</p>
             <h1 class="doc-hero-title">ManiSkill-ViTac Challenge 2026</h1>
             <p class="doc-hero-subtitle">
-                AI for Science themed challenge documentation covering rules, track definitions, evaluation logic, timeline and registration structure.
+                AI for Science themed challenge documentation covering tracks, evaluation, timeline and the practical workflow for data collection and real-robot preparation.
             </p>
             <div class="doc-hero-actions">
                 <a href="index.html#registration" class="btn btn-primary">Go to Registration</a>
@@ -46,15 +46,17 @@
                 <div class="sidebar-section">
                     <h3 class="sidebar-title">Documentation</h3>
                     <ul class="sidebar-menu">
-                        <li><a href="#overview" class="sidebar-link active">Overview</a></li>
-                        <li><a href="#format" class="sidebar-link">Format</a></li>
-                        <li><a href="#tracks" class="sidebar-link">Tracks</a></li>
-                        <li><a href="#evaluation" class="sidebar-link">Evaluation</a></li>
-                        <li><a href="#timeline" class="sidebar-link">Timeline</a></li>
-                        <li><a href="#registration" class="sidebar-link">Registration</a></li>
-                        <li><a href="#resources" class="sidebar-link">Resources</a></li>
-                        <li><a href="#hardware" class="sidebar-link">Hardware</a></li>
-                        <li><a href="#open-issues" class="sidebar-link">Open Issues</a></li>
+                        <li><a href="#toc" class="sidebar-link active">📑 Table of Contents</a></li>
+                        <li><a href="#quick-start" class="sidebar-link">🚀 Quick Start</a></li>
+                        <li><a href="#installation" class="sidebar-link">&nbsp;&nbsp;&nbsp;1. Installation</a></li>
+                        <li><a href="#data-collection" class="sidebar-link">&nbsp;&nbsp;&nbsp;2. Data Collection</a></li>
+                        <li><a href="#data-processing" class="sidebar-link">&nbsp;&nbsp;&nbsp;3. Data Processing</a></li>
+                        <li><a href="#visualization" class="sidebar-link">&nbsp;&nbsp;&nbsp;4. Visualization</a></li>
+                        <li><a href="#robot-setup" class="sidebar-link">🤖 Robot Setup</a></li>
+                        <li><a href="#calibration" class="sidebar-link">&nbsp;&nbsp;&nbsp;Hand-Eye Calibration</a></li>
+                        <li><a href="#robot-api" class="sidebar-link">&nbsp;&nbsp;&nbsp;Robot API</a></li>
+                        <li><a href="#submission" class="sidebar-link">📮 Submission</a></li>
+                        <li><a href="#acknowledgments" class="sidebar-link">🧩 Acknowledgments</a></li>
                     </ul>
                 </div>
             </div>
@@ -63,272 +65,390 @@
         <main class="doc-content">
             <div class="content-wrapper">
                 <div class="doc-intro-card">
-                    <p class="doc-intro-label">Challenge Manual</p>
+                    <p class="doc-intro-label">Participant Guide</p>
                     <h1 class="doc-main-title">ManiSkill-ViTac Challenge 2026</h1>
                     <p class="doc-intro-text">
-                        This page is the central reference for the AI for Science themed challenge structure, task scope, evaluation criteria and operational planning notes currently available to participants.
+                        Step-by-step guide covering environment setup, data collection, data processing, visualization, robot calibration and submission for the ManiSkill-ViTac Challenge 2026.
                     </p>
                 </div>
 
-                <section id="overview" class="doc-section">
+                <!-- Table of Contents -->
+                <section id="toc" class="doc-section">
                     <h2 class="doc-heading">
-                        <span class="heading-icon">📘</span>
-                        Overview
+                        <span class="heading-icon">📑</span>
+                        Table of Contents
+                    </h2>
+                    <ul class="doc-toc-list">
+                        <li>📑 <a href="#toc">Table of Contents</a></li>
+                        <li>🚀 <a href="#quick-start">Quick Start</a>
+                            <ul class="doc-toc-sub">
+                                <li><a href="#installation">1. Installation</a></li>
+                                <li><a href="#data-collection">2. Data Collection</a></li>
+                                <li><a href="#data-processing">3. Data Processing</a></li>
+                                <li><a href="#visualization">4. Visualization</a></li>
+                            </ul>
+                        </li>
+                        <li>🤖 <a href="#robot-setup">Robot Setup</a>
+                            <ul class="doc-toc-sub">
+                                <li><a href="#calibration">Hand-Eye Calibration</a></li>
+                                <li><a href="#robot-api">Robot API</a></li>
+                            </ul>
+                        </li>
+                        <li>📮 <a href="#submission">Submission</a></li>
+                        <li>🧩 <a href="#acknowledgments">Acknowledgments</a></li>
+                    </ul>
+                </section>
+
+                <!-- Quick Start -->
+                <section id="quick-start" class="doc-section">
+                    <h2 class="doc-heading">
+                        <span class="heading-icon">🚀</span>
+                        Quick Start
+                    </h2>
+
+                    <!-- 1. Installation -->
+                    <div id="installation" class="doc-subsection" style="scroll-margin-top: 100px;">
+                        <h3 class="doc-subsection-heading">
+                            <span class="doc-step-label">1</span>
+                            Installation
+                        </h3>
+                        <p class="doc-paragraph">Activate the collection conda environment before connecting any devices or running scripts.</p>
+<pre><code>source ~/miniconda3/bin/activate
+conda activate vb</code></pre>
+                    </div>
+
+                    <!-- 2. Data Collection -->
+                    <div id="data-collection" class="doc-subsection" style="scroll-margin-top: 100px;">
+                        <h3 class="doc-subsection-heading">
+                            <span class="doc-step-label">2</span>
+                            Data Collection
+                        </h3>
+                        <p class="doc-paragraph">
+                            The collection pipeline is organized around Quest tracking, packed camera streams and a task config YAML.
+                            Follow these steps in order.
+                        </p>
+
+                        <h4 class="doc-subheading">Step 1 — Confirm Quest connection</h4>
+                        <p class="doc-paragraph">Check that the device state is <code>device</code>, not <code>unauthorized</code>, <code>offline</code> or <code>no permissions</code>.</p>
+<pre><code>adb devices</code></pre>
+
+                        <h4 class="doc-subheading">Step 2 — Forward ports</h4>
+<pre><code>adb forward tcp:7777 tcp:7777
+adb forward tcp:50010 tcp:50010
+adb forward --list</code></pre>
+
+                        <h4 class="doc-subheading">Step 3 — Prepare the Quest app</h4>
+                        <ul class="doc-list">
+                            <li>Open the tracking app (<code>vb-tcp</code>) inside the headset.</li>
+                            <li>Select <strong>Y: TCP Mode</strong>.</li>
+                            <li>Keep the app in the foreground — do not let the Quest sleep.</li>
+                        </ul>
+
+                        <h4 class="doc-subheading">Step 4 — Verify camera devices</h4>
+                        <div class="doc-callout">
+                            <strong>Typical packed-camera mapping:</strong> <code>/dev/video0</code> = right hand packed, <code>/dev/video2</code> = left hand packed.
+                        </div>
+<pre><code>ls /dev/video*
+v4l2-ctl --list-devices</code></pre>
+
+                        <h4 class="doc-subheading">Step 5 — Edit the task config</h4>
+                        <p class="doc-paragraph">
+                            Config path: <code>VB-VLA/Data_collection/config/VB_task_config.yaml</code>
+                        </p>
+<pre><code>task:
+  type: single          # single or bimanual
+  name: raw_0321_data5
+  copy_raw_data: true
+  single_hand_side: left  # left or right (only used when type is 'single')
+
+recorder:
+  output: "./data"
+  camera:
+    format: "MJPG"
+    width: 3840
+    height: 800
+    auto_exposure: 3      # 1=auto, 3=manual
+    exposure: 300         # manual shutter (µs), only active when auto_exposure=3
+    auto_white_balance: 0 # 0=manual, 1=auto
+    wb_temperature: 4600  # manual white balance (K), only active when auto_white_balance=0
+    brightness: 0
+    gain: 40
+    gamma: 50
+
+  camera_paths:
+    left_hand: "/dev/video2"
+    # right_hand: "/dev/video0"</code></pre>
+
+                        <h4 class="doc-subheading">Step 6 — Launch the collection script</h4>
+<pre><code>python VB-VLA/Data_collection/vitamin_b_data_collection_pipeline/00_get_data.py \
+  --cfg VB-VLA/Data_collection/config/VB_task_config.yaml</code></pre>
+                    </div>
+
+                    <!-- 3. Data Processing -->
+                    <div id="data-processing" class="doc-subsection" style="scroll-margin-top: 100px;">
+                        <h3 class="doc-subsection-heading">
+                            <span class="doc-step-label">3</span>
+                            Data Processing
+                        </h3>
+
+                        <h4 class="doc-subheading">1. Merge raw demos</h4>
+<pre><code>python Data_collection/vitamin_b_data_collection_pipeline/merge_raw_demos.py \
+  --source data/raw_data0 data/raw_data1 \
+  --target data/raw_merged</code></pre>
+
+                        <h4 class="doc-subheading">2. Update dataset naming in <code>config.py</code></h4>
+<pre><code># Dataset naming — edit these three fields together
+DATASET_TRAIN_NAME: str = "0118_data_1smooth"   # used for repo_id, asset_id, exp_name
+DATASET_RAW_TASK_NAME: str = "raw_0118_data"    # raw data path: data/{task_name}/
+DATASET_REPO_NAMESPACE: str = "your-namespace"  # HuggingFace namespace</code></pre>
+
+                        <h4 class="doc-subheading">3. Choose task mode</h4>
+                        <p class="doc-paragraph">Four settings control single-arm vs bimanual behaviour — keep them consistent across preprocessing and training:</p>
+                        <div class="doc-card-grid doc-card-grid-two">
+                            <article class="doc-card">
+                                <h3 class="doc-subheading">Single-Arm</h3>
+                                <ul class="doc-list">
+                                    <li><code>task_type: "single"</code></li>
+                                    <li><code>single_hand_side: "left"</code> or <code>"right"</code></li>
+                                    <li><code>single_arm: True</code></li>
+                                    <li><code>no_state: False</code> → <code>state_dim=7</code>, <code>action_dim=10</code></li>
+                                    <li>Training config: <code>pi05_single</code> / <code>pi05_single_vitac</code></li>
+                                </ul>
+                            </article>
+                            <article class="doc-card">
+                                <h3 class="doc-subheading">Bimanual</h3>
+                                <ul class="doc-list">
+                                    <li><code>task_type: "bimanual"</code></li>
+                                    <li><code>single_arm: False</code></li>
+                                    <li><code>no_state: False</code> → <code>state_dim=20</code>, <code>action_dim=20</code></li>
+                                    <li>Training config: <code>pi05_bi</code></li>
+                                </ul>
+                            </article>
+                        </div>
+                        <div class="doc-note">
+                            Setting <code>no_state: True</code> keeps only gripper width in the state vector. If you use this, make sure to update <code>--state_dim</code> / <code>--action_dim</code> in your training config accordingly.
+                        </div>
+
+                        <h4 class="doc-subheading">4. One-click conversion to LeRobot format</h4>
+<pre><code>python Data_collection/run_data_collection_pipeline_le.py</code></pre>
+
+                        <h4 class="doc-subheading">5. Upload to Hugging Face</h4>
+<pre><code># Authenticate (enter your token when prompted)
+hf auth login
+
+# Use the China mirror if needed
+export HF_ENDPOINT=https://hf-mirror.com
+
+# Upload the processed dataset
+hf upload your-namespace/your-dataset /path/to/processed_dataset . \
+  --repo-type dataset</code></pre>
+                        <div class="doc-callout">
+                            UMI gripper labeling files: <a href="https://drive.google.com/drive/folders/1Yo-6Mx4QW7FA15WNu9H8cZRB3MlyswHV" target="_blank" rel="noreferrer">Google Drive</a> &nbsp;·&nbsp;
+                            Foot pedal setup software: <a href="https://usb3.lanzouu.com/iF6xP3cg369a" target="_blank" rel="noreferrer">Download</a>
+                        </div>
+                    </div>
+
+                    <!-- 4. Visualization -->
+                    <div id="visualization" class="doc-subsection" style="scroll-margin-top: 100px;">
+                        <h3 class="doc-subsection-heading">
+                            <span class="doc-step-label">4</span>
+                            Visualization
+                        </h3>
+                        <p class="doc-paragraph">
+                            Use the rerun-based visualization tool to inspect collected datasets, replay robot trajectories and verify that camera, state and action streams are aligned.
+                        </p>
+
+                        <h4 class="doc-subheading">Setup</h4>
+<pre><code>conda create -n vbviz python=3.11 -y
+conda activate vbviz
+# install visualization dependencies in ~/VB-VLA/robot_visualization-main</code></pre>
+
+                        <h4 class="doc-subheading">Usage</h4>
+<pre><code># Single episode
+python src/viz_rerun.py /path/to/dataset -e 0
+
+# Multiple non-consecutive episodes
+python src/viz_rerun.py /path/to/dataset -e 0 3 7
+
+# A range of episodes
+python src/viz_rerun.py /path/to/dataset -e 0-10
+
+# Mixed range and individual episodes
+python src/viz_rerun.py /path/to/dataset -e 0-5 8 12-15
+
+# Save a .rrd replay file and open it later
+python src/viz_rerun.py /path/to/dataset --save output.rrd
+rerun output.rrd</code></pre>
+                        <p class="doc-paragraph">
+                            Source: <a href="https://github.com/chaoyiL/robot_visualization" target="_blank" rel="noreferrer">robot_visualization repository</a>
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Robot Setup -->
+                <section id="robot-setup" class="doc-section">
+                    <h2 class="doc-heading">
+                        <span class="heading-icon">🤖</span>
+                        Robot Setup
+                    </h2>
+
+                    <!-- Hand-Eye Calibration -->
+                    <div id="calibration" class="doc-subsection" style="scroll-margin-top: 100px;">
+                        <h3 class="doc-subsection-heading">Hand-Eye Calibration</h3>
+                        <p class="doc-paragraph">
+                            Run the robot API and the Quest-to-end-effector pose capture script in two separate terminals, then save calibration sequences for solving and validation.
+                        </p>
+<pre><code># Terminal 1 — start the robot API
+python3 api_demo.py
+
+# Terminal 2 — capture calibration poses
+conda activate vb
+cd ~/VB-VLA
+
+python tools/cali_hand_eye/get_quest_ee_pose.py \
+  --side left \
+  --no-auto \
+  --passive \
+  --save-dir /path/to/calibration_run</code></pre>
+
+                        <div class="doc-card-grid doc-card-grid-two">
+                            <article class="doc-card">
+                                <h3 class="doc-subheading">Collection Tips</h3>
+                                <ul class="doc-list">
+                                    <li>Use <strong>small translations and small rotations</strong>; keep translation smaller than rotation.</li>
+                                    <li>Keep the controller's black face pointing toward the Quest.</li>
+                                    <li>Stay near the center of the Quest field of view — avoid the edges.</li>
+                                </ul>
+                            </article>
+                            <article class="doc-card">
+                                <h3 class="doc-subheading">Validation Tips</h3>
+                                <ul class="doc-list">
+                                    <li><strong>Record dual timestamps</strong> — Quest packet timestamp, local receive time, and EE read time — to diagnose latency jitter.</li>
+                                    <li><strong>Static test:</strong> hold both robot and hand still for 20 frames. If Quest pose still jumps (&gt;5 mm / &gt;1°), the tracking or timing has issues.</li>
+                                    <li>Check the robot coordinate frame, the arm root frame, and the transform between them (S matrix correctness).</li>
+                                    <li>Verify forward kinematics by moving the gripper and measuring the displacement with a ruler.</li>
+                                </ul>
+                            </article>
+                        </div>
+                        <div class="doc-note">
+                            Hardware reference: <a href="https://chuanyune.github.io/ViTaMIn-B_page/" target="_blank" rel="noreferrer">ViTaMIn-B project page</a>
+                        </div>
+                    </div>
+
+                    <!-- Robot API -->
+                    <div id="robot-api" class="doc-subsection" style="scroll-margin-top: 100px;">
+                        <h3 class="doc-subsection-heading">Robot API</h3>
+                        <p class="doc-paragraph">
+                            The hardware interface exposes a compact state-machine API for reading robot state, sending joint-space targets and switching modes during recording or playback.
+                        </p>
+
+                        <h4 class="doc-subheading">Endpoints</h4>
+                        <div class="doc-table-wrap">
+                            <table class="doc-table">
+                                <thead>
+                                    <tr>
+                                        <th>Method</th>
+                                        <th>Endpoint</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>GET</code></td>
+                                        <td><code>/state</code></td>
+                                        <td>Read state-machine status and hardware status</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>POST</code></td>
+                                        <td><code>/action</code></td>
+                                        <td>Send left/right arm joint targets and gripper targets</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>POST</code></td>
+                                        <td><code>/command</code></td>
+                                        <td>Switch modes; start/stop recording or playback</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>GET</code></td>
+                                        <td><code>/error</code></td>
+                                        <td>Read current error state</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h4 class="doc-subheading">Action Body</h4>
+<pre><code>body = {
+    LEFT_ARM:      left_arm_target_positions,   # 7 joint angles in radians
+    LEFT_GRIPPER:  left_gripper_target_position, # width in meters
+    RIGHT_ARM:     right_arm_target_positions,   # 7 joint angles in radians
+    RIGHT_GRIPPER: right_gripper_target_position # width in meters
+}</code></pre>
+
+                        <h4 class="doc-subheading">Action Space Notes</h4>
+                        <p class="doc-paragraph">
+                            VLA policies typically output end-effector deltas (Δposition, Δrotation, gripper action),
+                            while the API accepts joint-space targets. An <strong>action adapter</strong> is required:
+                        </p>
+                        <ul class="doc-list">
+                            <li>Forward kinematics (FK) to get the current end-effector pose.</li>
+                            <li>Apply Δpose to compute the target end-effector pose.</li>
+                            <li>Inverse kinematics (IK) to convert to joint targets.</li>
+                            <li>Apply joint limits, interpolation and filtering before sending.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Submission -->
+                <section id="submission" class="doc-section">
+                    <h2 class="doc-heading">
+                        <span class="heading-icon">📮</span>
+                        Submission
                     </h2>
                     <p class="doc-paragraph">
-                        ManiSkill-ViTac Challenge 2026 focuses on contact-rich bimanual manipulation with visual and tactile sensing,
-                        with an application emphasis on laboratory-style embodied manipulation. The current planning materials highlight
-                        AI for Science style tasks that require dexterous control, stable contact and reliable execution under varying materials and tools.
+                        Once you are satisfied with your model's performance, submit your results through the <a href="index.html#registration">submission form</a>. The submitted files include:
                     </p>
-                    <p class="doc-paragraph">
-                        Compared with last year's page, the 2026 edition is being organized around a clearer participant journey:
-                        understand the benchmark, register a team, submit an early proposal package, iterate with released data and baselines,
-                        then enter the formal evaluation cycle and final workshop presentation.
-                    </p>
+                    <ul class="doc-list">
+                        <li>A <strong>README</strong> (<code>.md</code>) file providing detailed instructions on how we can evaluate your policy.</li>
+                        <li>A <strong>Docker image URL</strong> or <strong>HuggingFace repo link</strong> containing your checkpoints, source code and all dependencies required for evaluation.</li>
+                        <li>A <strong><code>.txt</code> file</strong> containing the rollout results you performed locally.</li>
+                        <li><strong>Source code link (optional, but highly encouraged).</strong> This will NOT be used for evaluation, but helps us debug issues if anything goes wrong during evaluation.</li>
+                    </ul>
                     <div class="doc-note">
-                        This documentation reflects the latest planning notes currently available. Items marked as pending are intentionally
-                        left flexible until the final public rulebook is released.
+                        Please check the submission form for more detailed requirements and deadlines.
                     </div>
                 </section>
 
-                <section id="format" class="doc-section">
+                <!-- Acknowledgments -->
+                <section id="acknowledgments" class="doc-section">
                     <h2 class="doc-heading">
-                        <span class="heading-icon">🧭</span>
-                        Challenge Format
-                    </h2>
-                    <div class="doc-card-grid">
-                        <article class="doc-card">
-                            <h3 class="doc-subheading">Stage A: Registration and Proposal</h3>
-                            <p class="doc-paragraph">
-                                Teams first register through a Google Form style signup flow and prepare basic proof materials or a short proposal
-                                before the first screening deadline.
-                            </p>
-                        </article>
-                        <article class="doc-card">
-                            <h3 class="doc-subheading">Stage B: Preparation and Iteration</h3>
-                            <p class="doc-paragraph">
-                                Organizers release dataset examples, training baselines, tutorials and system documentation so teams can begin development
-                                before the formal submission stage.
-                            </p>
-                        </article>
-                        <article class="doc-card">
-                            <h3 class="doc-subheading">Stage C: Formal Evaluation</h3>
-                            <p class="doc-paragraph">
-                                Teams enter the official evaluation loop with real-time feedback and a limited number of submission opportunities,
-                                followed by final result announcement and workshop presentation.
-                            </p>
-                        </article>
-                    </div>
-                    <ul class="doc-list">
-                        <li><strong>Early screening:</strong> planning notes suggest a proposal review window in late April to early May 2026.</li>
-                        <li><strong>Offline testing target:</strong> internal notes mention a first-stage deadline before May 1, 2026 for offline testing readiness and supporting materials.</li>
-                        <li><strong>Evaluation quota:</strong> a real-time evaluation phase with up to 5 attempts is currently under consideration.</li>
-                    </ul>
-                </section>
-
-                <section id="tracks" class="doc-section">
-                    <h2 class="doc-heading">
-                        <span class="heading-icon">🧪</span>
-                        Tracks
+                        <span class="heading-icon">🧩</span>
+                        Acknowledgments
                     </h2>
                     <p class="doc-paragraph">
-                        The 2026 edition is organized around two concrete laboratory manipulation tracks. This section summarizes the task content of each track.
-                    </p>
-
-                    <h3 class="doc-subheading">Track 1: Test Tube Pick and Place + Cleaning</h3>
-                    <div class="doc-callout">
-                        <strong>Task content:</strong> complete test tube pick-and-place, insertion and cleaning tasks in laboratory settings.
-                    </div>
-                    <ul class="doc-list">
-                        <li>Test tube pick and place or insertion tasks</li>
-                        <li>Internal tube cleaning with a brush</li>
-                    </ul>
-
-                    <h3 class="doc-subheading">Track 2: Grinding Operation</h3>
-                    <div class="doc-callout">
-                        <strong>Task content:</strong> complete grinding tasks with mortar-and-pestle style tools in laboratory settings.
-                    </div>
-                    <ul class="doc-list">
-                        <li>Grinding tasks with laboratory tools and materials</li>
-                        <li>Mortar-and-pestle style tool use</li>
-                    </ul>
-                </section>
-
-                <section id="evaluation" class="doc-section">
-                    <h2 class="doc-heading">
-                        <span class="heading-icon">📏</span>
-                        Evaluation and Scoring
-                    </h2>
-                    <p class="doc-paragraph">
-                        The current planning document proposes a multi-factor evaluation instead of success rate alone. This better matches the laboratory
-                        setting, where speed, stability and material safety all matter.
+                        This project stands on the shoulders of giants. We utilize and build upon the following excellent open-source projects:
                     </p>
                     <div class="doc-card-grid doc-card-grid-two">
                         <article class="doc-card">
-                            <h3 class="doc-subheading">Core Metrics</h3>
+                            <h3 class="doc-subheading">Frameworks &amp; Tools</h3>
                             <ul class="doc-list">
-                                <li>Task completion accuracy</li>
-                                <li>Completion time</li>
-                                <li>Operational stability</li>
-                                <li>Whether drops, spills or damage occur</li>
-                                <li>Robustness to difficult cases and disturbances</li>
+                                <li><a href="https://developer.nvidia.com/isaac-sim" target="_blank" rel="noreferrer">Isaac Sim</a> — photorealistic physics simulation</li>
+                                <li><a href="https://isaac-sim.github.io/IsaacLab/" target="_blank" rel="noreferrer">Isaac Lab</a> — modular robot learning environments</li>
+                                <li><a href="https://github.com/huggingface/lerobot" target="_blank" rel="noreferrer">LeRobot</a> — state-of-the-art imitation learning algorithms</li>
+                                <li><a href="https://github.com/chaoyiL/robot_visualization" target="_blank" rel="noreferrer">robot_visualization</a> — dataset inspection tool</li>
                             </ul>
                         </article>
                         <article class="doc-card">
-                            <h3 class="doc-subheading">Practical Interpretation</h3>
+                            <h3 class="doc-subheading">Challenge References</h3>
                             <ul class="doc-list">
-                                <li>Fast but unstable behavior should not dominate the ranking.</li>
-                                <li>Material-sensitive tasks should penalize spills or destructive interactions.</li>
-                                <li>Generalization across vessel sizes, materials and contents is expected to matter.</li>
+                                <li><a href="https://ai-workshops.github.io/maniskill-vitac-challenge-2025/" target="_blank" rel="noreferrer">ManiSkill-ViTac Challenge 2025</a></li>
+                                <li><a href="https://chuanyune.github.io/ViTaMIn-B_page/" target="_blank" rel="noreferrer">ViTaMIn-B project page</a></li>
+                                <li><a href="https://discord.com/invite/YD7xBydau4" target="_blank" rel="noreferrer">Challenge Discord</a> — community support</li>
                             </ul>
                         </article>
                     </div>
                 </section>
 
-                <section id="timeline" class="doc-section">
-                    <h2 class="doc-heading">
-                        <span class="heading-icon">🗓️</span>
-                        Tentative Timeline
-                    </h2>
-                    <div class="doc-timeline">
-                        <div class="doc-timeline-item">
-                            <div class="doc-timeline-date">Jan 25, 2026</div>
-                            <div class="doc-timeline-body">Website release.</div>
-                        </div>
-                        <div class="doc-timeline-item">
-                            <div class="doc-timeline-date">Early April 2026</div>
-                            <div class="doc-timeline-body">First batch of dataset examples planned for release.</div>
-                        </div>
-                        <div class="doc-timeline-item">
-                            <div class="doc-timeline-date">Early April 2026</div>
-                            <div class="doc-timeline-body">Planning note mentions at least 200 samples per category plus data documentation and visualization code.</div>
-                        </div>
-                        <div class="doc-timeline-item">
-                            <div class="doc-timeline-date">May 1, 2026</div>
-                            <div class="doc-timeline-body">Proposal screening for qualifying teams.</div>
-                        </div>
-                        <div class="doc-timeline-item">
-                            <div class="doc-timeline-date">Around May 1, 2026</div>
-                            <div class="doc-timeline-body">Baseline leaderboard target date mentioned in the preparation notes.</div>
-                        </div>
-                        <div class="doc-timeline-item">
-                            <div class="doc-timeline-date">Jun 3-4, 2026</div>
-                            <div class="doc-timeline-body">Workshop and award ceremony at the CVPR 2026 Embodied AI Workshop in Denver.</div>
-                        </div>
-                    </div>
-                </section>
-
-                <section id="registration" class="doc-section">
-                    <h2 class="doc-heading">
-                        <span class="heading-icon">📝</span>
-                        Registration Design
-                    </h2>
-                    <p class="doc-paragraph">
-                        The planning notes recommend a Google Form based registration channel. The public signup page has not been released yet,
-                        but the intended form structure is already clear enough to document.
-                    </p>
-
-                    <h3 class="doc-subheading">Team Information</h3>
-                    <ul class="doc-list">
-                        <li>Team name</li>
-                        <li>Team size, suggested range 1-5</li>
-                        <li>Participating track selection: Track 1 for test tube pick and place plus cleaning, or Track 2 for grinding</li>
-                    </ul>
-
-                    <h3 class="doc-subheading">Team Leader Information</h3>
-                    <ul class="doc-list">
-                        <li>Full name</li>
-                        <li>Email address</li>
-                        <li>Affiliation or institution</li>
-                        <li>Country or region</li>
-                    </ul>
-
-                    <h3 class="doc-subheading">Team Members</h3>
-                    <ul class="doc-list">
-                        <li>Repeated member fields for Member 2 to Member 5, or a simplified email list field</li>
-                        <li>Name, email and affiliation for each additional member</li>
-                    </ul>
-
-                    <h3 class="doc-subheading">Background and Compliance</h3>
-                    <ul class="doc-list">
-                        <li>Career stage: PhD student, postdoc, faculty, industry or other</li>
-                        <li>Prior experience with tactile sensing or bimanual manipulation</li>
-                        <li>How the team heard about the challenge</li>
-                        <li>Agreement with challenge rules and code of conduct</li>
-                        <li>Confirmation that all team members agree to participate</li>
-                        <li>Optional hardware support or kit loan request</li>
-                        <li>Optional brief description of the planned approach</li>
-                    </ul>
-
-                    <div class="doc-note">
-                        The registration page on the website can safely expose this structure now, even if the final Google Form link is still pending.
-                    </div>
-                </section>
-
-                <section id="resources" class="doc-section">
-                    <h2 class="doc-heading">
-                        <span class="heading-icon">📦</span>
-                        Resources to Be Released
-                    </h2>
-                    <div class="doc-card-grid doc-card-grid-two">
-                        <article class="doc-card">
-                            <h3 class="doc-subheading">Competition Assets</h3>
-                            <ul class="doc-list">
-                                <li>Rulebook and challenge document</li>
-                                <li>GitHub site and code repository</li>
-                                <li>Training baseline and starter tutorial</li>
-                                <li>Dataset examples</li>
-                                <li>Baseline leaderboard</li>
-                            </ul>
-                        </article>
-                        <article class="doc-card">
-                            <h3 class="doc-subheading">System Documentation</h3>
-                            <ul class="doc-list">
-                                <li>Hardware composition</li>
-                                <li>Assembly instructions</li>
-                                <li>Robot information</li>
-                                <li>Tactile sensor information</li>
-                                <li>Open-source support documents</li>
-                            </ul>
-                        </article>
-                    </div>
-                </section>
-
-                <section id="hardware" class="doc-section">
-                    <h2 class="doc-heading">
-                        <span class="heading-icon">🔧</span>
-                        Hardware and Materials Snapshot
-                    </h2>
-                    <p class="doc-paragraph">
-                        The planning notes already identify example objects and consumables for the laboratory tasks. These are useful as an early signal
-                        of the intended manipulation regime, although the final public procurement list may still change.
-                    </p>
-                    <ul class="doc-list">
-                        <li><strong>Test tubes:</strong> multiple diameters, including 18 mm, 25 mm and 50 mm categories.</li>
-                        <li><strong>Tube racks and brushes:</strong> both handled and non-handled brushes are being considered for cleaning tasks.</li>
-                        <li><strong>Grinding setups:</strong> ceramic and glass mortar-and-pestle variants across different sizes.</li>
-                        <li><strong>Materials:</strong> calcium carbonate particles, gypsum, quartz sand, activated carbon and copper sulfate solution appear in the draft equipment list.</li>
-                    </ul>
-                    <div class="doc-callout">
-                        The website should describe categories of equipment, not internal shopping links. This page intentionally summarizes the task-relevant
-                        objects without publishing internal procurement notes.
-                    </div>
-                </section>
-
-                <section id="open-issues" class="doc-section">
-                    <h2 class="doc-heading">
-                        <span class="heading-icon">⏳</span>
-                        Open Issues
-                    </h2>
-                    <ul class="doc-list">
-                        <li>Final number of participating teams</li>
-                        <li>Whether proof materials are mandatory for all teams</li>
-                        <li>Exact proposal screening rules and dates</li>
-                        <li>Hardware preparation format and possible lab access</li>
-                        <li>Whether remote-only preparation is supported</li>
-                        <li>Whether hardware loan will be offered, and under what constraints</li>
-                    </ul>
-                </section>
             </div>
         </main>
     </div>
@@ -354,15 +474,16 @@
             });
         });
 
-        const sections = document.querySelectorAll('.doc-section');
+        // Track all scrollable targets: sections + subsections + warning
+        const scrollTargets = document.querySelectorAll('[id].doc-section, [id].doc-subsection, [id].doc-warning');
         const sidebarLinks = document.querySelectorAll('.sidebar-link');
 
         window.addEventListener('scroll', () => {
             let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (window.pageYOffset >= sectionTop - 200) {
-                    current = section.getAttribute('id');
+            scrollTargets.forEach(el => {
+                const top = el.getBoundingClientRect().top;
+                if (top <= 160) {
+                    current = el.getAttribute('id') || '';
                 }
             });
 
