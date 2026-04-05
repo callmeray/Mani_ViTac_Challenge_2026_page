@@ -49,11 +49,12 @@
         </video>
         <div class="hero-background"></div>
         <div class="container">
-            <p class="hero-kicker">Real-Robot Challenge for Contact-Rich Bimanual Manipulation</p>
+            <p class="hero-kicker">Tactile Manipulation Skill Learning Challenge 2026</p>
             <h1 class="hero-title">ManiSkill-ViTac Challenge 2026</h1>
             <p class="hero-subtitle">
-                An AI for Science challenge benchmark for embodied agents that must reason with visual and tactile feedback,
-                generalize across contact-rich tasks, and transfer to a unified real-robot setup.
+                The third edition of the ManiSkill-ViTac series — a real-robot benchmarking platform for
+                contact-rich tactile manipulation skill learning, with standardized hardware, data collection
+                and evaluation protocols for visuo-tactile policies.
             </p>
             <div class="hero-buttons">
                 <a href="doc.html" class="btn btn-primary">Read Documentation</a>
@@ -142,35 +143,35 @@
             <section class="overview-section">
                 <h2 class="section-title" id="overview">Overview</h2>
                 <p class="section-lead">
-                    Building on the 2025 edition, this year's challenge sharpens the focus on robust multi-modal policy learning
-                    and reproducible real-robot evaluation.
+                    Building on the 2024 and 2025 editions, the 2026 challenge expands to bimanual tactile manipulation
+                    with real-robot evaluation across two contact-rich laboratory tasks.
                 </p>
                 <div class="content-wrapper">
                     <p class="intro-text">
-                        <strong>ManiSkill-ViTac Challenge 2026</strong> is a real-robot challenge on bimanual manipulation with fused
-                        visual and tactile sensing in contact-rich tasks. It builds on the
+                        <strong>ManiSkill-ViTac Challenge 2026</strong> provides a standardized benchmarking platform for
+                        contact-rich tactile manipulation skill learning. Built on the
                         <a href="https://chuanyune.github.io/ViTaMIn-B_page/" target="_blank" rel="noreferrer">ViTaMIn-B</a>
-                        visuo-tactile interface, standardizing hardware assumptions and data format into a common benchmark for
-                        training and evaluating multi-modal embodied policies.
+                        visuo-tactile bimanual platform, it unifies hardware configuration, data format and evaluation protocol
+                        to allow direct comparison of visuo-tactile policies across teams.
                     </p>
                     <p>
-                        The 2026 edition currently centers on two tracks: a test-tube manipulation track that combines pick and place
-                        with cleaning, and a grinding track oriented toward laboratory-style embodied manipulation. Together they target
-                        core capabilities in perception, contact control, bimanual coordination and robust real-world execution.
+                        Participants collect real-robot demonstration data, develop visuo-tactile manipulation policies,
+                        and are evaluated on physical robots. The challenge targets core capabilities in tactile perception,
+                        contact-rich manipulation and bimanual coordination that are difficult to benchmark with vision alone.
                     </p>
                 </div>
                 <div class="feature-grid">
                     <article class="feature-card">
-                        <h3>Real-Robot Finals</h3>
-                        <p>Top entries will be validated on a unified hardware setup to measure sim-to-real transfer instead of simulation-only performance.</p>
+                        <h3>Visuo-Tactile Policy Learning</h3>
+                        <p>Agents must fuse visual and tactile observations to perform contact-rich bimanual tasks that require tactile feedback for reliable execution.</p>
                     </article>
                     <article class="feature-card">
-                        <h3>Visuo-Tactile Benchmarking</h3>
-                        <p>Policies must interpret contact-rich signals from both vision and tactile sensing under task variation and object diversity.</p>
+                        <h3>Real Demonstration Data</h3>
+                        <p>Participants work from real-robot demonstration data collected on the ViTaMIn-B platform, covering bimanual coordination and contact-rich interactions.</p>
                     </article>
                     <article class="feature-card">
-                        <h3>Broader Task Coverage</h3>
-                        <p>The two-track design covers both dexterous test-tube handling and material-processing style manipulation in lab settings.</p>
+                        <h3>Unified Real-Robot Evaluation</h3>
+                        <p>All teams are evaluated on a shared physical hardware setup, providing consistent and reproducible performance measurement across submissions.</p>
                     </article>
                 </div>
             </section>
@@ -210,25 +211,28 @@
             <section class="tracks-section">
                 <h2 class="section-title" id="tracks">Tracks</h2>
                 <p class="section-lead">
-                    The 2026 edition is organized around two concrete laboratory manipulation tracks.
+                    The 2026 edition features two laboratory manipulation tracks, both evaluated on physical robots
+                    and requiring visuo-tactile policies for contact-rich task execution.
                 </p>
                 <div class="track-grid">
                     <article class="track-card">
                         <span class="track-tag">Track 1</span>
                         <h3>Test Tube Pick and Place + Cleaning</h3>
-                        <p>Track 1 focuses on test tube pick-and-place, insertion and cleaning tasks in laboratory settings.</p>
+                        <p>Participants develop policies for picking, placing and rack-inserting glass test tubes, followed by internal cleaning with a brush. Tactile sensing is essential for compliant grasping and precise insertion.</p>
                         <ul class="track-points">
-                            <li>Test tube pick and place or insertion tasks</li>
+                            <li>Test tube pick-and-place and rack insertion</li>
                             <li>Internal tube cleaning with a brush</li>
+                            <li>Evaluation on generalization across tube sizes and rack configurations</li>
                         </ul>
                     </article>
                     <article class="track-card">
                         <span class="track-tag">Track 2</span>
                         <h3>Grinding Operation</h3>
-                        <p>Track 2 focuses on grinding tasks with mortar-and-pestle style tools in laboratory settings.</p>
+                        <p>Participants develop policies for mortar-and-pestle grinding in laboratory settings. The task requires contact force regulation and bimanual coordination, with tactile feedback as the primary control signal.</p>
                         <ul class="track-points">
-                            <li>Grinding tasks with laboratory tools and materials</li>
-                            <li>Mortar-and-pestle style tool use</li>
+                            <li>Force-regulated grinding with mortar and pestle</li>
+                            <li>Bimanual coordination under contact-rich conditions</li>
+                            <li>Evaluation on grinding quality and task completion</li>
                         </ul>
                     </article>
                 </div>
