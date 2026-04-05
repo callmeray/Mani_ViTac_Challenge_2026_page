@@ -666,6 +666,37 @@ body {
     max-width: 860px;
 }
 
+.rerun-tabs {
+    display: flex;
+    gap: 8px;
+    padding: 16px 20px 0;
+}
+
+.rerun-tab {
+    padding: 8px 20px;
+    border-radius: 10px 10px 0 0;
+    border: 1px solid rgba(148, 163, 184, 0.25);
+    border-bottom: none;
+    background: rgba(241, 245, 249, 0.7);
+    color: #64748b;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.18s, color 0.18s;
+}
+
+.rerun-tab:hover {
+    background: rgba(219, 234, 254, 0.7);
+    color: #1d4ed8;
+}
+
+.rerun-tab.active {
+    background: #fff;
+    color: #1d4ed8;
+    font-weight: 600;
+    border-color: rgba(148, 163, 184, 0.3);
+}
+
 .rerun-embed-card {
     padding: 0;
     border-radius: 24px;
