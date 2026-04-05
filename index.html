@@ -14,18 +14,12 @@
                 <span class="brand-text">ManiSkill-ViTac Challenge 2026</span>
             </div>
             <div class="nav-links">
-                <a href="#news" class="nav-link" data-nav="news">News</a>
                 <a href="#overview" class="nav-link">Overview</a>
-                <a href="#format" class="nav-link">Format</a>
                 <a href="#tracks" class="nav-link">Tracks</a>
-                <a href="#visualization" class="nav-link">Visualization</a>
                 <a href="#leaderboard" class="nav-link">LeaderBoard</a>
                 <a href="#timeline" class="nav-link">Timeline</a>
-<a href="#sponsors" class="nav-link">Sponsor</a>
                 <a href="#registration" class="nav-link">Registration</a>
-                <a href="#contact" class="nav-link">Contact</a>
-                <a href="doc.html" class="nav-link nav-link-doc">Doc</a>
-                <div class="nav-item-dropdown nav-item-highlight">
+<div class="nav-item-dropdown nav-item-highlight">
                     <button type="button" class="nav-link nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">
                         Past Challenges
                     </button>
@@ -48,42 +42,14 @@
         </video>
         <div class="hero-background"></div>
         <div class="container">
-            <p class="hero-kicker">Tactile Manipulation Skill Learning Challenge 2026</p>
-            <h1 class="hero-title">ManiSkill-ViTac Challenge 2026</h1>
+<h1 class="hero-title">ManiSkill-ViTac Challenge 2026</h1>
             <p class="hero-subtitle">
-                The third edition of the ManiSkill-ViTac series — a real-robot benchmarking platform for
-                contact-rich tactile manipulation skill learning, with standardized hardware, data collection
-                and evaluation protocols for visuo-tactile policies.
+                Tactile manipulation, benchmarked on real robots.
             </p>
             <div class="hero-buttons">
                 <a href="doc.html" class="btn btn-primary">Read Documentation</a>
                 <a href="https://discord.com/invite/YD7xBydau4" target="_blank" rel="noreferrer" class="btn btn-secondary">Join Discord</a>
                 <a href="#registration" class="btn btn-news">Track Registration</a>
-            </div>
-            <div class="hero-highlights">
-                <div class="highlight-card">
-                    <span class="highlight-label">Window</span>
-                    <strong>Feb.-Jun. 2026</strong>
-                </div>
-                <div class="highlight-card">
-                    <span class="highlight-label">Tracks</span>
-                    <strong>2 challenge tracks</strong>
-                </div>
-                <div class="highlight-card">
-                    <span class="highlight-label">Finals</span>
-                    <strong>Unified real-robot evaluation</strong>
-                </div>
-                <div class="highlight-card">
-                    <span class="highlight-label">Workshop</span>
-                    <strong>CVPR 2026 Embodied AI Workshop</strong>
-                </div>
-            </div>
-            <div class="hero-note">
-                <div class="hero-note-label">Note</div>
-                <p>
-                    After registration opens, teams will receive follow-up information for proposal submission, support materials and community discussion.
-                    Please use the documentation page and Discord server as the primary channels for updates.
-                </p>
             </div>
         </div>
     </section>
@@ -142,21 +108,25 @@
             <section class="overview-section">
                 <h2 class="section-title" id="overview">Overview</h2>
                 <p class="section-lead">
-                    Building on the 2024 and 2025 editions, the 2026 challenge expands to bimanual tactile manipulation
-                    with real-robot evaluation across two contact-rich laboratory tasks.
+                    The third edition of the ManiSkill-ViTac series, expanding from single-arm tactile manipulation
+                    to bimanual tasks with language conditioning.
                 </p>
                 <div class="content-wrapper">
                     <p class="intro-text">
-                        <strong>ManiSkill-ViTac Challenge 2026</strong> provides a standardized benchmarking platform for
-                        contact-rich tactile manipulation skill learning. Built on the
+                        The <a href="https://ai-workshops.github.io/maniskill-vitac-challenge-2024/" target="_blank" rel="noreferrer">2024</a>
+                        and <a href="https://ai-workshops.github.io/maniskill-vitac-challenge-2025/" target="_blank" rel="noreferrer">2025</a>
+                        editions established tactile manipulation as a core benchmark challenge, covering peg insertion, lock opening
+                        and visuo-tactile fusion with GelSight sensors.
+                        <strong>ManiSkill-ViTac 2026</strong> builds on this foundation with the
                         <a href="https://chuanyune.github.io/ViTaMIn-B_page/" target="_blank" rel="noreferrer">ViTaMIn-B</a>
-                        visuo-tactile bimanual platform, it unifies hardware configuration, data format and evaluation protocol
-                        to allow direct comparison of visuo-tactile policies across teams.
+                        bimanual platform and introduces language-conditioned tactile manipulation policies.
                     </p>
                     <p>
-                        Participants collect real-robot demonstration data, develop visuo-tactile manipulation policies,
-                        and are evaluated on physical robots. The challenge targets core capabilities in tactile perception,
-                        contact-rich manipulation and bimanual coordination that are difficult to benchmark with vision alone.
+                        Both tracks involve contact-rich tasks where high-fidelity optical tactile sensor rendering
+                        and accurate contact physics simulation remain open research problems.
+                        This makes real-world behavioral cloning the natural approach:
+                        participants collect demonstration data directly on physical robots and develop
+                        language-conditioned visuo-tactile policies evaluated on the same hardware.
                     </p>
                 </div>
                 <div class="feature-grid">
@@ -186,22 +156,22 @@
                         <span class="phase-label">Phase I</span>
                         <h3>Open Preparation and Screening</h3>
                         <p class="phase-window">Feb. to Apr. 2026</p>
-                        <p>Registration, proposal screening, dataset examples, baseline release and early development all happen in this phase.</p>
+                        <p>Registration, team screening, dataset examples and early development all happen in this phase.</p>
                         <ul class="track-points">
                             <li>Open team registration and onboarding</li>
                             <li>Dataset examples and documentation release</li>
-                            <li>Proposal and offline readiness review</li>
+                            <li>Teams submit a package covering relevant past projects and their plan for this challenge</li>
                         </ul>
                     </article>
                     <article class="phase-card">
                         <span class="phase-label">Phase II</span>
                         <h3>Evaluation and Workshop Finals</h3>
                         <p class="phase-window">May to Jun. 2026</p>
-                        <p>Selected teams move into the official evaluation loop, leaderboard updates and final workshop presentation.</p>
+                        <p>A subset of top-ranked teams from Phase I are invited to advance. Selected teams move into the official evaluation loop, leaderboard updates and final workshop presentation.</p>
                         <ul class="track-points">
-                            <li>Real-time evaluation with limited attempts</li>
+<li>Real-time evaluation with limited attempts</li>
                             <li>Leaderboard publication and final ranking</li>
-                            <li>Workshop award ceremony at CVPR 2026</li>
+                            <li>Champion team presents at the CVPR 2026 Embodied AI Workshop</li>
                         </ul>
                     </article>
                 </div>
@@ -217,6 +187,9 @@
                     <article class="track-card">
                         <span class="track-tag">Track 1</span>
                         <h3>Test Tube Pick and Place + Cleaning</h3>
+                        <video autoplay muted loop playsinline style="width:100%;border-radius:8px;margin-bottom:12px;">
+                            <source src="task1.mp4" type="video/mp4">
+                        </video>
                         <p>Participants develop policies for picking, placing and rack-inserting glass test tubes, followed by internal cleaning with a brush. Tactile sensing is essential for compliant grasping and precise insertion.</p>
                         <ul class="track-points">
                             <li>Test tube pick-and-place and rack insertion</li>
@@ -227,6 +200,9 @@
                     <article class="track-card">
                         <span class="track-tag">Track 2</span>
                         <h3>Grinding Operation</h3>
+                        <video autoplay muted loop playsinline style="width:100%;border-radius:8px;margin-bottom:12px;">
+                            <source src="task2.mp4" type="video/mp4">
+                        </video>
                         <p>Participants develop policies for mortar-and-pestle grinding in laboratory settings. The task requires contact force regulation and bimanual coordination, with tactile feedback as the primary control signal.</p>
                         <ul class="track-points">
                             <li>Force-regulated grinding with mortar and pestle</li>
@@ -348,8 +324,8 @@
                     </article>
                     <article class="timeline-card">
                         <div class="timeline-card-date">May 1, 2026</div>
-                        <h3>Proposal Screening</h3>
-                        <p>Proposal screening for qualifying teams.</p>
+                        <h3>Phase II Application Deadline</h3>
+                        <p>Deadline for teams to submit their application package (past relevant projects and challenge plan) for Phase II selection.</p>
                     </article>
                     <article class="timeline-card">
                         <div class="timeline-card-date">Around May 1, 2026</div>
@@ -366,13 +342,8 @@
 
 <section class="sponsors-section">
                 <h2 class="section-title" id="sponsors">Sponsors and Partners</h2>
-                <p class="section-lead">
-                    Sponsor and partner information will be published here together with workshop support details.
-                </p>
                 <div class="sponsor-pill-row">
                     <div class="sponsor-pill">CVPR 2026 Embodied AI Workshop</div>
-                    <div class="sponsor-pill">Partner Information Coming Soon</div>
-                    <div class="sponsor-pill">Support Details Coming Soon</div>
                 </div>
             </section>
 
@@ -421,14 +392,14 @@
                     </div>
                     <div class="registration-form-wrap">
                         <iframe
-                            src="https://docs.google.com/forms/d/e/1FAIpQLSfh7qOZzdL4BpHt9RyqVVD3OX1meqCdPUTmUbwya0vOD-jf1A/viewform?embedded=true"
-                            width="100%"
-                            height="4892"
+                            src="https://docs.google.com/forms/d/e/1FAIpQLScJThkDrYC1EMQQuvBvdaWpoDv0horUnfZ0DjCBGUtchbx4yA/viewform?embedded=true"
+                            width="640"
+                            height="5264"
                             frameborder="0"
                             marginheight="0"
                             marginwidth="0"
                             title="ManiSkill-ViTac Challenge 2026 Registration Form">
-                            Loading…
+                            正在加载…
                         </iframe>
                     </div>
                 </div>
