@@ -71,9 +71,9 @@ body {
 
 .nav-links {
     display: flex;
-    gap: 2.5rem;
+    gap: 1.2rem;
     align-items: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: flex-end;
 }
 
@@ -82,10 +82,11 @@ body {
     text-decoration: none;
     font-weight: 500;
     transition: opacity 0.3s ease;
-    font-size: 1rem;
+    font-size: 0.88rem;
     display: inline-flex;
     align-items: center;
     gap: 0.25rem;
+    white-space: nowrap;
 }
 
 .nav-link:hover {
@@ -484,6 +485,61 @@ body {
     font-weight: 600;
 }
 
+/* Awards section */
+.awards-section {
+    margin: 4rem 0;
+    text-align: center;
+}
+
+.awards-grid {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem 0 1.5rem;
+}
+
+.award-card {
+    padding: 2rem 2.5rem;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.86);
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    box-shadow: 0 18px 45px rgba(37, 99, 235, 0.06);
+    min-width: 180px;
+}
+
+.award-icon {
+    font-size: 2.2rem;
+    display: block;
+    margin-bottom: 0.6rem;
+}
+
+.award-card h3 {
+    font-size: 1.1rem;
+    color: #0f172a;
+    margin-bottom: 0.5rem;
+}
+
+.award-amount {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #2563eb;
+}
+
+.awards-note {
+    color: #64748b;
+    font-size: 0.95rem;
+    max-width: 640px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+@media (max-width: 600px) {
+    .awards-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
 .timeline-section {
     margin: 1rem 0;
     padding: 1.5rem 0 0.5rem;
@@ -510,7 +566,7 @@ body {
 
 .feature-grid,
 .format-grid,
-.track-grid,
+.task-grid,
 .resource-grid,
 .phase-grid,
 .leaderboard-grid {
@@ -524,7 +580,7 @@ body {
 
 .feature-card,
 .format-card,
-.track-card,
+.task-card,
 .resource-card,
 .phase-card,
 .leaderboard-card,
@@ -543,7 +599,7 @@ body {
 
 .feature-card h3,
 .format-card h3,
-.track-card h3,
+.task-card h3,
 .resource-card h3,
 .phase-card h3,
 .leaderboard-card h3,
@@ -555,7 +611,7 @@ body {
 
 .feature-card p,
 .format-card p,
-.track-card p,
+.task-card p,
 .resource-card p,
 .phase-card p,
 .leaderboard-card p,
@@ -598,6 +654,107 @@ body {
     color: #0f172a;
 }
 
+/* Stage flow — vertical timeline layout */
+.stage-flow {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin: 0 auto;
+}
+
+.stage-card {
+    display: flex;
+    gap: 1.6rem;
+    align-items: stretch;
+}
+
+.stage-marker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    width: 44px;
+}
+
+.stage-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #2563eb;
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 800;
+    flex-shrink: 0;
+}
+
+.stage-line {
+    flex: 1;
+    width: 2px;
+    background: linear-gradient(to bottom, #2563eb, rgba(37, 99, 235, 0.15));
+    margin: 0.3rem 0;
+}
+
+.stage-body {
+    padding: 1.5rem 1.7rem 2rem;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.86);
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    box-shadow: 0 18px 45px rgba(37, 99, 235, 0.06);
+    flex: 1;
+    margin-bottom: 1.2rem;
+}
+
+.stage-body h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.8rem;
+    color: #0f172a;
+}
+
+.stage-body p {
+    color: #475569;
+    font-size: 1rem;
+    line-height: 1.75;
+}
+
+.stage-sub-heading {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #2563eb;
+    margin: 1.3rem 0 0.5rem;
+}
+
+.stage-body a {
+    color: #2563eb;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(37, 99, 235, 0.25);
+}
+
+.stage-body a:hover {
+    border-bottom-color: #2563eb;
+}
+
+@media (max-width: 768px) {
+    .stage-card {
+        gap: 1rem;
+    }
+    .stage-marker {
+        width: 36px;
+    }
+    .stage-number {
+        width: 36px;
+        height: 36px;
+        font-size: 0.95rem;
+    }
+    .stage-body {
+        padding: 1.2rem 1.3rem 1.5rem;
+    }
+}
+
 .format-card {
     position: relative;
     padding: 1.6rem;
@@ -617,18 +774,129 @@ body {
     font-size: 0.9rem;
 }
 
-.track-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 2rem;
+/* Task gallery — carousel layout */
+.task-gallery {
+    position: relative;
     max-width: 1080px;
     margin: 0 auto;
 }
 
-.track-card {
-    padding: 1.9rem;
+.task-gallery-viewport {
+    overflow: hidden;
 }
 
-.track-tag,
+.task-slide {
+    display: none;
+    padding: 2rem;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.86);
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    box-shadow: 0 18px 45px rgba(37, 99, 235, 0.06);
+    animation: taskFadeIn 0.35s ease;
+}
+
+.task-slide.active {
+    display: block;
+}
+
+@keyframes taskFadeIn {
+    from { opacity: 0; transform: translateX(12px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+.task-video {
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 1.2rem;
+}
+
+.task-viz-label {
+    margin-top: 1.5rem;
+    margin-bottom: 0.6rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #94a3b8;
+    letter-spacing: 0.03em;
+}
+
+.task-rerun-wrap {
+    width: 100%;
+    min-height: 500px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #0c0c0c;
+}
+
+.task-gallery-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    border: 1px solid rgba(148, 163, 184, 0.25);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.92);
+    color: #0f172a;
+    font-size: 1.6rem;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: background 0.2s, box-shadow 0.2s;
+}
+
+.task-gallery-arrow:hover {
+    background: #fff;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+.task-gallery-prev { left: -60px; }
+.task-gallery-next { right: -60px; }
+
+.task-gallery-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.2rem;
+}
+
+.task-dot {
+    padding: 0.35rem 0.9rem;
+    border-radius: 999px;
+    border: 1px solid rgba(37, 99, 235, 0.2);
+    background: transparent;
+    color: #2563eb;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.task-dot.active {
+    background: #2563eb;
+    color: #fff;
+    border-color: #2563eb;
+}
+
+@media (max-width: 1200px) {
+    .task-gallery-prev { left: -10px; }
+    .task-gallery-next { right: -10px; }
+}
+
+@media (max-width: 768px) {
+    .task-gallery-arrow {
+        width: 36px;
+        height: 36px;
+        font-size: 1.2rem;
+    }
+    .task-gallery-prev { left: 4px; }
+    .task-gallery-next { right: 4px; }
+}
+
+.task-tag,
 .resource-type {
     display: inline-block;
     margin-bottom: 0.85rem;
@@ -642,14 +910,14 @@ body {
     text-transform: uppercase;
 }
 
-.track-points {
+.task-points {
     margin-top: 1rem;
     padding-left: 1.25rem;
     color: #475569;
     font-size: 0.96rem;
 }
 
-.track-points li {
+.task-points li {
     margin-bottom: 0.55rem;
     line-height: 1.6;
 }
@@ -1493,26 +1761,26 @@ body {
     padding: 1.6rem;
 }
 
-.leaderboard-track-grid {
+.leaderboard-task-grid {
     max-width: 1040px;
     margin: 0 auto;
     align-items: stretch;
 }
 
-.leaderboard-track-card {
+.leaderboard-task-card {
     background: rgba(255, 255, 255, 0.92);
     border: 1px solid rgba(148, 163, 184, 0.18);
     border-radius: 26px;
     box-shadow: 0 18px 45px rgba(37, 99, 235, 0.06);
 }
 
-.leaderboard-track-card h3 {
+.leaderboard-task-card h3 {
     margin-bottom: 0.65rem;
     color: #0f172a;
     font-size: 1.25rem;
 }
 
-.leaderboard-track-card p {
+.leaderboard-task-card p {
     color: #475569;
 }
 
@@ -1636,8 +1904,8 @@ body {
 
 /* Registration meta info cards */
 .registration-meta-cards {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    display: flex;
+    justify-content: center;
     gap: 1rem;
     margin: 2rem 0 2.5rem;
 }
@@ -2012,8 +2280,8 @@ body {
 }
 
 .team-grid-faculty {
-    max-width: 420px;
-    grid-template-columns: repeat(2, minmax(140px, 1fr));
+    max-width: 630px;
+    grid-template-columns: repeat(3, minmax(140px, 1fr));
 }
 
 .team-member {
@@ -2079,13 +2347,13 @@ body {
 
 .contact-section p {
     margin-bottom: 1.25rem;
-    font-size: inherit;
-    color: #b7c1d0;
+    font-size: 1.1rem;
+    color: #334155;
     text-align: justify;
 }
 
 .link {
-    color: #c7d2fe;
+    color: #2563eb;
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s ease;
@@ -2152,7 +2420,7 @@ body {
     .hero-highlights,
     .feature-grid,
     .format-grid,
-    .track-grid,
+    .task-grid,
     .resource-grid,
     .phase-grid,
     .award-grid,
@@ -2268,7 +2536,7 @@ body {
     .highlight-card,
     .feature-card,
     .format-card,
-    .track-card,
+    .task-card,
     .resource-card,
     .phase-card,
     .award-card,

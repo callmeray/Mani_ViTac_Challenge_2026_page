@@ -1,4 +1,4 @@
-const LATEST_NEWS_DATE = '2025-11-15';
+const LATEST_NEWS_DATE = '2026-01-26';
 const NEWS_LAST_SEEN_KEY = 'challenge_news_last_seen';
 
 function updateNewsBadge() {

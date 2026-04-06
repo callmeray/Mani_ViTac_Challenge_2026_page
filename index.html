@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,10 +15,12 @@
             </div>
             <div class="nav-links">
                 <a href="#overview" class="nav-link">Overview</a>
-                <a href="#tracks" class="nav-link">Tracks</a>
+                <a href="#format" class="nav-link">Challenge Format</a>
                 <a href="#leaderboard" class="nav-link">LeaderBoard</a>
                 <a href="#timeline" class="nav-link">Timeline</a>
                 <a href="#registration" class="nav-link">Registration</a>
+                <a href="#organizers" class="nav-link">Organizers</a>
+                <a href="#contact" class="nav-link">Contact</a>
 <div class="nav-item-dropdown nav-item-highlight">
                     <button type="button" class="nav-link nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">
                         Past Challenges
@@ -44,12 +46,12 @@
         <div class="container">
 <h1 class="hero-title">ManiSkill-ViTac Challenge 2026</h1>
             <p class="hero-subtitle">
-                Tactile manipulation, benchmarked on real robots.
+                Real-world language-guided bimanual vision-tactile manipulation challenge
             </p>
             <div class="hero-buttons">
                 <a href="doc.html" class="btn btn-primary">Read Documentation</a>
                 <a href="https://discord.com/invite/YD7xBydau4" target="_blank" rel="noreferrer" class="btn btn-secondary">Join Discord</a>
-                <a href="#registration" class="btn btn-news">Track Registration</a>
+                <a href="#registration" class="btn btn-news">Registration</a>
             </div>
         </div>
     </section>
@@ -57,10 +59,6 @@
     <section class="news-content">
         <div class="container">
             <h2 class="section-title" id="news">News</h2>
-            <p class="section-lead">
-                Key challenge announcements will be posted here first, including dataset releases, submission milestones,
-                workshop updates and final evaluation details.
-            </p>
             <div class="news-list">
                 <article class="news-item" data-date="2026-01-26">
                     <div class="news-date">
@@ -95,7 +93,7 @@
                         <h2 class="news-heading">Challenge Website Released</h2>
                         <p class="news-excerpt">
                             The official ManiSkill-ViTac Challenge 2026 website is now live. Follow the news and documentation
-                            sections for track definitions, timelines, participation details and future resource releases.
+                            sections for task definitions, timelines, participation details and future resource releases.
                         </p>
                     </div>
                 </article>
@@ -107,203 +105,214 @@
         <div class="container">
             <section class="overview-section">
                 <h2 class="section-title" id="overview">Overview</h2>
-                <p class="section-lead">
-                    The third edition of the ManiSkill-ViTac series, expanding from single-arm tactile manipulation
-                    to bimanual tasks with language conditioning.
-                </p>
                 <div class="content-wrapper">
                     <p class="intro-text">
                         The <a href="https://ai-workshops.github.io/maniskill-vitac-challenge-2024/" target="_blank" rel="noreferrer">2024</a>
                         and <a href="https://ai-workshops.github.io/maniskill-vitac-challenge-2025/" target="_blank" rel="noreferrer">2025</a>
-                        editions established tactile manipulation as a core benchmark challenge, covering peg insertion, lock opening
-                        and visuo-tactile fusion with GelSight sensors.
-                        <strong>ManiSkill-ViTac 2026</strong> builds on this foundation with the
-                        <a href="https://chuanyune.github.io/ViTaMIn-B_page/" target="_blank" rel="noreferrer">ViTaMIn-B</a>
-                        bimanual platform and introduces language-conditioned tactile manipulation policies.
+                        editions built a simulation-based sim-to-real pipeline for tactile manipulation, covering tasks such as
+                        peg insertion, lock opening and visuo-tactile fusion with visuotactile sensors.
+                        However, many real-world scenarios — transparent objects, liquids, granular materials and fragile solids —
+                        remain extremely difficult to simulate and render with sufficient fidelity.
+                        Real-world demonstration data offers a powerful complement to simulation,
+                        enabling policy learning for these challenging domains.
                     </p>
                     <p>
-                        Both tracks involve contact-rich tasks where high-fidelity optical tactile sensor rendering
-                        and accurate contact physics simulation remain open research problems.
-                        This makes real-world behavioral cloning the natural approach:
-                        participants collect demonstration data directly on physical robots and develop
-                        language-conditioned visuo-tactile policies evaluated on the same hardware.
+                        <strong>ManiSkill-ViTac Challenge 2026</strong> addresses this gap.
+                        Built on the <a href="https://chuanyune.github.io/ViTaMIn-B_page/" target="_blank" rel="noreferrer">ViTaMIn-B</a>
+                        bimanual visuo-tactile data collection platform, the challenge provides real-world demonstration
+                        trajectories for contact-rich bimanual tasks. Participants train language-conditioned visuo-tactile
+                        policies directly from these demonstrations and are evaluated on the same physical hardware.
+                        By introducing language guidance, the challenge aims to advance research toward
+                        <strong>TVLA (Tactile-Vision-Language-Action)</strong> models —
+                        unifying tactile sensing, visual perception and language understanding within a single action policy.
                     </p>
                 </div>
                 <div class="feature-grid">
                     <article class="feature-card">
-                        <h3>Visuo-Tactile Policy Learning</h3>
-                        <p>Agents must fuse visual and tactile observations to perform contact-rich bimanual tasks that require tactile feedback for reliable execution.</p>
+                        <h3>Beyond Simulation</h3>
+                        <p>Tasks involve transparent objects, liquids and material fragmentation — scenarios where accurate physics simulation and tactile rendering remain unsolved, making real-world data the only viable path.</p>
                     </article>
                     <article class="feature-card">
-                        <h3>Real Demonstration Data</h3>
-                        <p>Participants work from real-robot demonstration data collected on the ViTaMIn-B platform, covering bimanual coordination and contact-rich interactions.</p>
+                        <h3>ViTaMIn-B Bimanual Platform</h3>
+                        <p>All demonstration data is collected on ViTaMIn-B, a bimanual visuo-tactile teleoperation system that captures synchronized vision, tactile and proprioceptive streams at scale.</p>
                     </article>
                     <article class="feature-card">
-                        <h3>Unified Real-Robot Evaluation</h3>
-                        <p>All teams are evaluated on a shared physical hardware setup, providing consistent and reproducible performance measurement across submissions.</p>
+                        <h3>Language-Conditioned tVLA</h3>
+                        <p>Each task is paired with natural-language instructions. Policies must ground language into tactile-visual control, pushing the frontier of Tactile-Vision-Language-Action models.</p>
                     </article>
                 </div>
             </section>
 
             <section class="format-section">
                 <h2 class="section-title" id="format">Challenge Format</h2>
-                <p class="section-lead">
-                    Inspired by more complete challenge sites, the 2026 competition is organized as a two-phase pipeline from open preparation
-                    to final real-robot evaluation.
-                </p>
-                <div class="phase-grid">
-                    <article class="phase-card">
-                        <span class="phase-label">Phase I</span>
-                        <h3>Open Preparation and Screening</h3>
-                        <p class="phase-window">Feb. to Apr. 2026</p>
-                        <p>Registration, team screening, dataset examples and early development all happen in this phase.</p>
-                        <ul class="track-points">
-                            <li>Open team registration and onboarding</li>
-                            <li>Dataset examples and documentation release</li>
-                            <li>Teams submit a package covering relevant past projects and their plan for this challenge</li>
-                        </ul>
+                <div class="stage-flow">
+                    <article class="stage-card">
+                        <div class="stage-marker">
+                            <span class="stage-number">1</span>
+                            <span class="stage-line"></span>
+                        </div>
+                        <div class="stage-body">
+                            <span class="phase-label">Stage 1</span>
+                            <h3>Registration and Screening</h3>
+                            <p class="phase-window">Feb. — Apr. 2026</p>
+                            <p>
+                                A batch of sample training data for each task will be released in mid-April 2026,
+                                including wrist camera images, tactile images, wrist poses and language instructions.
+                                Participants can use this data to understand the task setup, develop initial approaches,
+                                and prepare the technical brief required for Stage 2 selection.
+                            </p>
+                            <h4 class="stage-sub-heading">How to participate</h4>
+                            <ul class="task-points">
+                                <li>Register through the <a href="#registration">registration form</a> — each team consists of one leader, an optional advisor, and up to four additional members</li>
+                                <li>Data format <a href="doc.html">documentation</a> and visualization tools will be provided alongside the sample data release</li>
+                                <li>A <a href="https://discord.com/invite/YD7xBydau4" target="_blank" rel="noreferrer">Discord</a> server is available for Q&A and discussion with organizers and other participants</li>
+                            </ul>
+                            <h4 class="stage-sub-heading">Technical Brief</h4>
+                            <ul class="task-points">
+                                <li>Each team submits a 2–4 page technical brief by May 1, 2026</li>
+                                <li>Content should cover team background, relevant prior work, and technical approach for the challenge</li>
+                                <li>A subset of teams will be selected by the committee to advance to Stage 2 based on the technical brief</li>
+                                <li>The number of advancing teams depends on total registrations</li>
+                            </ul>
+                        </div>
                     </article>
-                    <article class="phase-card">
-                        <span class="phase-label">Phase II</span>
-                        <h3>Evaluation and Workshop Finals</h3>
-                        <p class="phase-window">May to Jun. 2026</p>
-                        <p>A subset of top-ranked teams from Phase I are invited to advance. Selected teams move into the official evaluation loop, leaderboard updates and final workshop presentation.</p>
-                        <ul class="track-points">
-<li>Real-time evaluation with limited attempts</li>
-                            <li>Leaderboard publication and final ranking</li>
-                            <li>Champion team presents at the CVPR 2026 Embodied AI Workshop</li>
-                        </ul>
-                    </article>
-                </div>
-            </section>
-
-            <section class="tracks-section">
-                <h2 class="section-title" id="tracks">Tracks</h2>
-                <p class="section-lead">
-                    The 2026 edition features two laboratory manipulation tracks, both evaluated on physical robots
-                    and requiring visuo-tactile policies for contact-rich task execution.
-                </p>
-                <div class="track-grid">
-                    <article class="track-card">
-                        <span class="track-tag">Track 1</span>
-                        <h3>Test Tube Pick and Place + Cleaning</h3>
-                        <video autoplay muted loop playsinline style="width:100%;border-radius:8px;margin-bottom:12px;">
-                            <source src="task1.mp4" type="video/mp4">
-                        </video>
-                        <p>Participants develop policies for picking, placing and rack-inserting glass test tubes, followed by internal cleaning with a brush. Tactile sensing is essential for compliant grasping and precise insertion.</p>
-                        <ul class="track-points">
-                            <li>Test tube pick-and-place and rack insertion</li>
-                            <li>Internal tube cleaning with a brush</li>
-                            <li>Evaluation on generalization across tube sizes and rack configurations</li>
-                        </ul>
-                    </article>
-                    <article class="track-card">
-                        <span class="track-tag">Track 2</span>
-                        <h3>Grinding Operation</h3>
-                        <video autoplay muted loop playsinline style="width:100%;border-radius:8px;margin-bottom:12px;">
-                            <source src="task2.mp4" type="video/mp4">
-                        </video>
-                        <p>Participants develop policies for mortar-and-pestle grinding in laboratory settings. The task requires contact force regulation and bimanual coordination, with tactile feedback as the primary control signal.</p>
-                        <ul class="track-points">
-                            <li>Force-regulated grinding with mortar and pestle</li>
-                            <li>Bimanual coordination under contact-rich conditions</li>
-                            <li>Evaluation on grinding quality and task completion</li>
-                        </ul>
+                    <article class="stage-card">
+                        <div class="stage-marker">
+                            <span class="stage-number">2</span>
+                        </div>
+                        <div class="stage-body">
+                            <span class="phase-label">Stage 2</span>
+                            <h3>Real-World Robot Evaluation</h3>
+                            <p class="phase-window">May — Jun. 2026</p>
+                            <p>The full demonstration dataset will be publicly released at the start of Stage 2. Advancing teams train their policies and submit them for evaluation on the physical robot platforms.</p>
+                            <h4 class="stage-sub-heading">Evaluation</h4>
+                            <ul class="task-points">
+                                <li>Full demonstration dataset publicly released</li>
+                                <li>Each team has multiple submission attempts; each submission is evaluated on both tasks on the physical platform</li>
+                                <li>The final score is the sum of Task 1 and Task 2 performance from the same submission — the highest-scoring submission is taken as the team's result</li>
+                            </ul>
+                            <h4 class="stage-sub-heading">Results and Award Ceremony</h4>
+                            <ul class="task-points">
+                                <li>Final rankings and results announced on June 1, 2026</li>
+                                <li>Award ceremony and winning team presentations at the CVPR 2026 Embodied AI Workshop (June 3–4, Denver)</li>
+                            </ul>
+                        </div>
                     </article>
                 </div>
             </section>
 
-            <section class="visualization-section">
-                <h2 class="section-title" id="visualization">Visualization Workbench</h2>
+            <section class="tasks-section">
+                <h2 class="section-title" id="tasks">Tasks</h2>
                 <p class="section-lead">
-                    Embedded challenge data playback.
+                    The challenge includes two tasks — Test Tube Cleaning and Grinding.
+                    The final score is the sum of performance across both tasks.
                 </p>
-                <div class="rerun-embed-card">
-                    <div class="rerun-tabs">
-                        <button class="rerun-tab active" data-rrd="./demo_vitac.rrd">Track 1 — Test Tube Cleaning</button>
-                        <button class="rerun-tab" data-rrd="./demo_vitac2.rrd">Track 2 — Grinding</button>
+                <div class="task-gallery">
+                    <button class="task-gallery-arrow task-gallery-prev" aria-label="Previous task">&#8249;</button>
+                    <div class="task-gallery-viewport">
+                        <article class="task-slide active" data-task="0">
+                            <span class="task-tag">Task 1</span>
+                            <h3>Test Tube Cleaning</h3>
+                            <p>Pick up glass test tubes, place them into a rack, and clean the tube interior with a brush. Tactile sensing is critical for compliant grasping of transparent tubes and precise rack insertion.</p>
+                            <ul class="task-points">
+                                <li>Test tube pick-and-place and rack insertion</li>
+                                <li>Internal tube cleaning with a brush</li>
+                                <li>Generalization across tube sizes and rack configurations</li>
+                                <li>Detailed evaluation metrics will be provided at the start of Stage 2</li>
+                            </ul>
+                            <video autoplay muted loop playsinline class="task-video">
+                                <source src="task1.mp4" type="video/mp4">
+                            </video>
+                            <h4 class="task-viz-label">Data Visualization</h4>
+                            <div class="task-rerun-wrap" id="rerun-host-task1"></div>
+                        </article>
+                        <article class="task-slide" data-task="1">
+                            <span class="task-tag">Task 2</span>
+                            <h3>Grinding</h3>
+                            <p>Grind materials in a mortar using a pestle. The task requires bimanual coordination and contact force regulation, with tactile feedback serving as the primary control signal.</p>
+                            <ul class="task-points">
+                                <li>Force-regulated grinding with mortar and pestle</li>
+                                <li>Bimanual coordination under contact-rich conditions</li>
+                                <li>Evaluation on grinding quality and task completion</li>
+                                <li>Detailed evaluation metrics will be provided at the start of Stage 2</li>
+                            </ul>
+                            <video autoplay muted loop playsinline class="task-video">
+                                <source src="task2.mp4" type="video/mp4">
+                            </video>
+                            <h4 class="task-viz-label">Data Visualization</h4>
+                            <div class="task-rerun-wrap" id="rerun-host-task2"></div>
+                        </article>
                     </div>
-                    <div id="rerun-viewer-host" class="rerun-viewer-host"></div>
+                    <button class="task-gallery-arrow task-gallery-next" aria-label="Next task">&#8250;</button>
+                    <div class="task-gallery-dots">
+                        <button class="task-dot active" data-task="0">Task 1</button>
+                        <button class="task-dot" data-task="1">Task 2</button>
+                    </div>
                 </div>
             </section>
 
             <section class="leaderboard-section leaderboard-showcase">
                 <h2 class="section-title" id="leaderboard">LeaderBoard</h2>
-                <p class="section-lead">
-                    Each track will report the official evaluation score together with the current baseline result.
-                </p>
-                <div class="leaderboard-grid leaderboard-track-grid">
-                    <article class="leaderboard-card leaderboard-track-card">
-                        <span class="leaderboard-tag">Track 1</span>
-                        <h3>Test Tube Pick and Place + Cleaning</h3>
-                        <p>Official evaluation results for the tube manipulation and cleaning track.</p>
-                        <div class="leaderboard-card-table-wrap">
-                            <table class="leaderboard-card-table">
-                                <thead>
-                                    <tr>
-                                        <th>Rank</th>
-                                        <th>Team Name</th>
-                                        <th>Model</th>
-                                        <th>Score</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>TBA</td>
-                                        <td>Coming soon</td>
-                                        <td>Coming soon</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Baseline</td>
-                                        <td>Official Baseline</td>
-                                        <td>Coming soon</td>
-                                        <td>Coming soon</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <p class="leaderboard-status">Updated: May 2026</p>
-                    </article>
-                    <article class="leaderboard-card leaderboard-track-card">
-                        <span class="leaderboard-tag">Track 2</span>
-                        <h3>Grinding Operation</h3>
-                        <p>Official evaluation results for the laboratory grinding track.</p>
-                        <div class="leaderboard-card-table-wrap">
-                            <table class="leaderboard-card-table">
-                                <thead>
-                                    <tr>
-                                        <th>Rank</th>
-                                        <th>Team Name</th>
-                                        <th>Model</th>
-                                        <th>Score</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>TBA</td>
-                                        <td>Coming soon</td>
-                                        <td>Coming soon</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Baseline</td>
-                                        <td>Official Baseline</td>
-                                        <td>Coming soon</td>
-                                        <td>Coming soon</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <p class="leaderboard-status">Updated: May 2026</p>
-                    </article>
+                <div class="leaderboard-card">
+                    <div class="leaderboard-card-table-wrap">
+                        <table class="leaderboard-card-table">
+                            <thead>
+                                <tr>
+                                    <th>Rank</th>
+                                    <th>Team Name</th>
+                                    <th>Task 1</th>
+                                    <th>Task 2</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>TBA</td>
+                                    <td>—</td>
+                                    <td>—</td>
+                                    <td>—</td>
+                                </tr>
+                                <tr>
+                                    <td>Baseline</td>
+                                    <td>Official Baseline</td>
+                                    <td>—</td>
+                                    <td>—</td>
+                                    <td>—</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="leaderboard-status">Updated: May 2026</p>
                 </div>
+            </section>
+
+            <section class="awards-section">
+                <h2 class="section-title" id="awards">Awards</h2>
+                <div class="awards-grid">
+                    <div class="award-card">
+                        <span class="award-icon">🥇</span>
+                        <h3>1st Place</h3>
+                        <p class="award-amount">TBD</p>
+                    </div>
+                    <div class="award-card">
+                        <span class="award-icon">🥈</span>
+                        <h3>2nd Place</h3>
+                        <p class="award-amount">TBD</p>
+                    </div>
+                    <div class="award-card">
+                        <span class="award-icon">🥉</span>
+                        <h3>3rd Place</h3>
+                        <p class="award-amount">TBD</p>
+                    </div>
+                </div>
+                <p class="awards-note">Prize amounts are being finalized with sponsors and will be announced soon. Winning teams will also be invited to present at the CVPR 2026 Embodied AI Workshop.</p>
             </section>
 
             <section class="timeline-section">
                 <h2 class="section-title" id="timeline">Challenge Timeline</h2>
                 <p class="section-lead">
-                    The challenge progresses from website release and early data preparation to proposal screening, leaderboard publication and workshop finals.
+                    The challenge progresses from website release and early data preparation to screening, leaderboard publication and award ceremony.
                 </p>
                 <div class="timeline-cards">
                     <article class="timeline-card">
@@ -317,29 +326,29 @@
                         <p>CVPR 2026 Embodied AI Workshop acceptance is announced.</p>
                     </article>
                     <article class="timeline-card">
-                        <div class="timeline-card-date">Early April 2026</div>
-                        <h3>First Data Release</h3>
-                        <p>The first batch of challenge data is scheduled for release.</p>
-                    </article>
-                    <article class="timeline-card">
-                        <div class="timeline-card-date">Early April 2026</div>
-                        <h3>Examples and Visualization</h3>
-                        <p>Dataset examples, documentation and visualization tools are targeted for early release.</p>
+                        <div class="timeline-card-date">Mid-April 2026</div>
+                        <h3>Sample Data, Documentation and Visualization Release</h3>
+                        <p>Sample training data, data format documentation and visualization tools released for both tasks.</p>
                     </article>
                     <article class="timeline-card">
                         <div class="timeline-card-date">May 1, 2026</div>
-                        <h3>Phase II Application Deadline</h3>
-                        <p>Deadline for teams to submit their application package (past relevant projects and challenge plan) for Phase II selection.</p>
+                        <h3>Technical Brief Deadline</h3>
+                        <p>Deadline for teams to submit their technical brief for Stage 2 selection.</p>
                     </article>
                     <article class="timeline-card">
-                        <div class="timeline-card-date">Around May 1, 2026</div>
-                        <h3>Baseline Leaderboard</h3>
-                        <p>The baseline leaderboard is tentatively targeted for publication around this time.</p>
+                        <div class="timeline-card-date">May 1, 2026</div>
+                        <h3>Full Dataset and Baseline Release</h3>
+                        <p>Full demonstration dataset publicly released. Baseline leaderboard published.</p>
                     </article>
                     <article class="timeline-card">
-                        <div class="timeline-card-date">Jun 3-4, 2026</div>
-                        <h3>Workshop Finals</h3>
-                        <p>Award ceremony and winning team presentations take place at the CVPR 2026 workshop in Denver.</p>
+                        <div class="timeline-card-date">Jun 1, 2026</div>
+                        <h3>Final Rankings Announced</h3>
+                        <p>Final results and leaderboard published.</p>
+                    </article>
+                    <article class="timeline-card">
+                        <div class="timeline-card-date">Jun 3–4, 2026</div>
+                        <h3>Award Ceremony</h3>
+                        <p>Award ceremony and winning team presentations at the CVPR 2026 Embodied AI Workshop in Denver.</p>
                     </article>
                 </div>
             </section>
@@ -354,7 +363,7 @@
             <section class="registration-section">
                 <h2 class="section-title" id="registration">Registration</h2>
                 <p class="section-lead">
-                    Fill in the form below to register your team. After registration, you will receive follow-up information for proposal submission, support materials and community discussion.
+                    Fill in the form below to register your team. After registration, you will receive follow-up information for technical brief submission, support materials and community discussion.
                 </p>
 
                 <div class="registration-meta-cards">
@@ -363,27 +372,6 @@
                         <div>
                             <div class="reg-meta-label">Registration Deadline</div>
                             <div class="reg-meta-value">May 1, 2026</div>
-                        </div>
-                    </div>
-                    <div class="reg-meta-card">
-                        <span class="reg-meta-icon">🧪</span>
-                        <div>
-                            <div class="reg-meta-label">Challenge Tracks</div>
-                            <div class="reg-meta-value">Track 1 · Track 2</div>
-                        </div>
-                    </div>
-                    <div class="reg-meta-card">
-                        <span class="reg-meta-icon">🏆</span>
-                        <div>
-                            <div class="reg-meta-label">Workshop</div>
-                            <div class="reg-meta-value">CVPR 2026 · Jun 3–4</div>
-                        </div>
-                    </div>
-                    <div class="reg-meta-card">
-                        <span class="reg-meta-icon">💬</span>
-                        <div>
-                            <div class="reg-meta-label">Community</div>
-                            <div class="reg-meta-value"><a href="https://discord.com/invite/YD7xBydau4" target="_blank" rel="noreferrer">Join Discord</a></div>
                         </div>
                     </div>
                 </div>
@@ -403,22 +391,10 @@
                             marginheight="0"
                             marginwidth="0"
                             title="ManiSkill-ViTac Challenge 2026 Registration Form">
-                            正在加载…
+                            Loading…
                         </iframe>
                     </div>
                 </div>
-            </section>
-
-            <section class="contact-section">
-                <h2 class="section-title" id="contact">Contact</h2>
-                <p>
-                    For technical support, please join our
-                    <a href="https://discord.com/invite/YD7xBydau4" class="link" target="_blank" rel="noreferrer">Discord</a>.
-                </p>
-                <p>
-                    For other questions, please email
-                    <a href="mailto:maniskill.vitac@gmail.com" class="link">maniskill.vitac@gmail.com</a>.
-                </p>
             </section>
 
             <section class="team-section">
@@ -439,6 +415,13 @@
                             </div>
                             <div class="member-name">Shaowei Cui</div>
                             <div class="member-affiliation">CASIA</div>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-avatar">
+                                <img src="imgs/Jing_Xu.jpg" alt="Jing Xu">
+                            </div>
+                            <div class="member-name">Jing Xu</div>
+                            <div class="member-affiliation">THU</div>
                         </div>
                     </div>
                 </div>
@@ -516,6 +499,18 @@
                         </div>
                     </div>
                 </div>
+            </section>
+
+            <section class="contact-section">
+                <h2 class="section-title" id="contact">Contact</h2>
+                <p>
+                    For technical support, please join our
+                    <a href="https://discord.com/invite/YD7xBydau4" class="link" target="_blank" rel="noreferrer">Discord</a>.
+                </p>
+                <p>
+                    For other questions, please email
+                    <a href="mailto:maniskill.vitac@gmail.com" class="link">maniskill.vitac@gmail.com</a>.
+                </p>
             </section>
         </div>
     </section>
@@ -603,38 +598,48 @@
         });
     </script>
     <script type="module">
-        const host = document.getElementById('rerun-viewer-host');
-        let viewer = null;
-        let currentRrd = null;
+        /* Rerun viewers — one per task, lazy-loaded */
+        const taskRrds = [
+            { host: 'rerun-host-task1', rrd: './demo_vitac.rrd' },
+            { host: 'rerun-host-task2', rrd: './demo_vitac2.rrd' }
+        ];
+        const viewers = {};
 
-        async function loadViewer(rrdPath) {
-            if (!host) return;
-            const rrdUrl = new URL(rrdPath, window.location.href).href;
-            if (currentRrd === rrdUrl) return;
-            currentRrd = rrdUrl;
+        async function loadRerunForSlide(idx) {
+            const cfg = taskRrds[idx];
+            if (!cfg || viewers[idx]) return;
+            const hostEl = document.getElementById(cfg.host);
+            if (!hostEl) return;
 
             const { WebViewer } = await import('https://esm.sh/@rerun-io/web-viewer@0.30.2');
-
-            if (viewer) {
-                viewer.stop();
-                host.innerHTML = '';
-            }
-
-            viewer = new WebViewer();
-            await viewer.start(rrdUrl, host, { width: '100%', height: '720px' });
+            const viewer = new WebViewer();
+            const rrdUrl = new URL(cfg.rrd, window.location.href).href;
+            await viewer.start(rrdUrl, hostEl, { width: '100%', height: '400px' });
+            viewers[idx] = viewer;
         }
 
-        document.querySelectorAll('.rerun-tab').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.rerun-tab').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                loadViewer(btn.dataset.rrd).catch(console.error);
-            });
-        });
+        /* Task gallery */
+        const slides = document.querySelectorAll('.task-slide');
+        const dots = document.querySelectorAll('.task-dot');
+        const prevBtn = document.querySelector('.task-gallery-prev');
+        const nextBtn = document.querySelector('.task-gallery-next');
+        let current = 0;
 
-        if (host) {
-            loadViewer('./demo_vitac.rrd').catch(console.error);
+        function goTo(idx) {
+            slides[current].classList.remove('active');
+            dots[current].classList.remove('active');
+            current = (idx + slides.length) % slides.length;
+            slides[current].classList.add('active');
+            dots[current].classList.add('active');
+            loadRerunForSlide(current).catch(console.error);
         }
+
+        prevBtn?.addEventListener('click', () => goTo(current - 1));
+        nextBtn?.addEventListener('click', () => goTo(current + 1));
+        dots.forEach(d => d.addEventListener('click', () => goTo(Number(d.dataset.task))));
+
+        /* load first slide's Rerun viewer */
+        loadRerunForSlide(0).catch(console.error);
     </script>
 </body>
 </html>
