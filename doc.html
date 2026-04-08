@@ -72,7 +72,7 @@
 
                     <h4 class="doc-subheading">Gripper Design</h4>
                     <p class="doc-paragraph">
-                        ViTaMIn-B2 is a system for bimanual visuo-tactile data collection, updated from ViTaMIn-B. The system integrates synchronized cameras for bimanual vision observation, Meta Quest 3 controllers for 6-DoF bimanual pose acquisition, and two DuoTact sensors for tactile sensing on each hand. Gripper width with a maximum span of 8 cm is computed by detecting ArUco markers on the gripper. Since both hands are occupied during data collection, a foot pedal is used to trigger the start and end of recording.
+                        ViTaMIn-B2 is a system for bimanual visuo-tactile data collection, updated from ViTaMIn-B. The system integrates synchronized cameras for bimanual visual observation, Meta Quest 3 controllers for 6-DoF bimanual pose acquisition, and two DuoTact sensors for tactile sensing on each hand. Gripper width with a maximum span of 8 cm is computed by detecting ArUco markers on the gripper. Since both hands are occupied during data collection, a foot pedal is used to trigger the start and end of recording.
                     </p>
                     <p class="doc-paragraph">Compared with ViTaMIn-B, several improvements were introduced:</p>
                     <ul class="doc-list">
@@ -135,37 +135,37 @@
                                     <td><code>observation.images.tactile_left_0</code></td>
                                     <td>Left hand — left tactile sensor</td>
                                     <td>(224, 224, 3)</td>
-                                    <td>Planar camera</td>
+                                    <td>Pinhole camera</td>
                                 </tr>
                                 <tr>
                                     <td><code>observation.images.tactile_right_0</code></td>
                                     <td>Left hand — right tactile sensor</td>
                                     <td>(224, 224, 3)</td>
-                                    <td>Planar camera</td>
+                                    <td>Pinhole camera</td>
                                 </tr>
                                 <tr>
                                     <td><code>observation.images.tactile_left_1</code></td>
                                     <td>Right hand — left tactile sensor</td>
                                     <td>(224, 224, 3)</td>
-                                    <td>Planar camera</td>
+                                    <td>Pinhole camera</td>
                                 </tr>
                                 <tr>
                                     <td><code>observation.images.tactile_right_1</code></td>
                                     <td>Right hand — right tactile sensor</td>
                                     <td>(224, 224, 3)</td>
-                                    <td>Planar camera</td>
+                                    <td>Pinhole camera</td>
                                 </tr>
                                 <tr>
                                     <td><code>observation.state</code></td>
                                     <td>Proprioceptive state</td>
                                     <td>(20,)</td>
-                                    <td>Dims 0–5: left hand 6-DoF pose (x, y, z, rx, ry, rz); 6: left gripper width; 7–12: right hand 6-DoF pose; 13: right gripper width; 14–19: right hand pose relative to left hand</td>
+                                    <td>Dim.0–5: left hand 6-DoF pose (x, y, z, rx, ry, rz); 6: left gripper width; 7–12: right hand 6-DoF pose; 13: right gripper width; 14–19: right hand pose relative to left hand</td>
                                 </tr>
                                 <tr>
                                     <td><code>actions</code></td>
-                                    <td>Action trajectory</td>
+                                    <td>End-effector action trajectory</td>
                                     <td>(20,)</td>
-                                    <td>Dims 0–8: left hand 9-DoF delta pose ((x, y, z) + first two columns of rotation matrix, i.e. r00, r10, r20, r01, r11, r21); 9: left gripper width; 10–18: right hand 9-DoF delta pose; 19: right gripper width</td>
+                                    <td>Dim.0–8: left hand 9-DoF delta pose ((x, y, z) + first two columns of rotation matrix, i.e. r00, r10, r20, r01, r11, r21); 9: left gripper width; 10–18: right hand 9-DoF delta pose; 19: right gripper width</td>
                                 </tr>
                             </tbody>
                         </table>
