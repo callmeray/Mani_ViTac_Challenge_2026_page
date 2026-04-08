@@ -46,9 +46,8 @@
                 <div class="sidebar-section">
                     <h3 class="sidebar-title">Documentation</h3>
                     <ul class="sidebar-menu">
-                        <li><a href="#data-processing" class="sidebar-link active">⚙️ Data Processing</a></li>
-                        <li><a href="#visualization" class="sidebar-link">🔍 Visualization</a></li>
-<li><a href="#deploy" class="sidebar-link">🚀 Deploy</a></li>
+                        <li><a href="#hardware" class="sidebar-link active">🦾 Hardware</a></li>
+                        <li><a href="#dataset-format" class="sidebar-link">📦 Dataset Format</a></li>
                     </ul>
                 </div>
             </div>
@@ -64,138 +63,115 @@
                     </p>
                 </div>
 
-                <!-- Data Processing -->
-                <section id="data-processing" class="doc-section">
+                <!-- Hardware -->
+                <section id="hardware" class="doc-section">
                     <h2 class="doc-heading">
-                        <span class="heading-icon">⚙️</span>
-                        Data Processing
+                        <span class="heading-icon">🦾</span>
+                        Hardware
                     </h2>
-                    <p class="doc-paragraph">
-                        The challenge uses <a href="https://github.com/huggingface/lerobot" target="_blank" rel="noreferrer">LeRobot</a>
-                        as the standard dataset format. Collected demonstrations must be converted to
-                        <strong>LeRobot v2.1 format</strong> before training.
-                    </p>
 
-                    <h4 class="doc-subheading">1. Convert to LeRobot format</h4>
+                    <h4 class="doc-subheading">Gripper Design</h4>
                     <p class="doc-paragraph">
-                        LeRobot v2.1 datasets are organized as episode-level parquet files and per-camera MP4 videos.
-                        Use the provided conversion script to transform your raw collected data into this structure.
-                        Refer to the <a href="https://github.com/huggingface/lerobot" target="_blank" rel="noreferrer">LeRobot documentation</a> for format details.
+                        ViTaMIn-B2 is a system for bimanual visuo-tactile data collection, updated from ViTaMIn-B. The system integrates synchronized cameras for bimanual vision observation, Meta Quest 3 controllers for 6-DoF bimanual pose acquisition, and two DuoTact sensors for tactile sensing on each hand. Gripper width with a maximum span of 8 cm is computed by detecting ArUco markers on the gripper. Since both hands are occupied during data collection, a foot pedal is used to trigger the start and end of recording.
                     </p>
+                    <p class="doc-paragraph">Compared with ViTaMIn-B, several improvements were introduced:</p>
+                    <ul class="doc-list">
+                        <li>The novel visuo-tactile sensors (DuoTact) are optimized to enhance structural stability. Markers on contact layers are introduced for better shear-force estimation.</li>
+                        <li>GoPro Hero 10 is replaced by synchronized cameras for lighter weight and better timestamp synchronization.</li>
+                        <li>The mechanical structure is optimized for improved ergonomics and reduced weight.</li>
+                    </ul>
 
-                    <h4 class="doc-subheading">2. Choose task mode</h4>
-                    <p class="doc-paragraph">Keep these settings consistent across data conversion and training:</p>
-                    <div class="doc-card-grid doc-card-grid-two">
-                        <article class="doc-card">
-                            <h3 class="doc-subheading">Single-Arm</h3>
-                            <ul class="doc-list">
-                                <li><code>state_dim = 7</code></li>
-                                <li><code>action_dim = 10</code></li>
-                                <li>1 wrist camera</li>
-                            </ul>
-                        </article>
-                        <article class="doc-card">
-                            <h3 class="doc-subheading">Bimanual</h3>
-                            <ul class="doc-list">
-                                <li><code>state_dim = 20</code></li>
-                                <li><code>action_dim = 20</code></li>
-                                <li>2 wrist cameras</li>
-                            </ul>
-                        </article>
+                    <div class="doc-img-wrap">
+                        <img src="imgs/image1.png" alt="ViTaMIn-B2 Gripper Design" class="doc-img">
                     </div>
 
-                    <h4 class="doc-subheading">3. Upload to Hugging Face</h4>
-<pre><code># Authenticate
-hf auth login
-
-# Use China mirror if needed
-export HF_ENDPOINT=https://hf-mirror.com
-
-# Upload the processed dataset
-hf upload &lt;your-hf-id&gt;/&lt;dataset-name&gt; /path/to/processed_dataset . \
-  --repo-type dataset</code></pre>
-
-                    <h4 class="doc-subheading">4. Download a dataset from Hugging Face</h4>
-<pre><code>hf download &lt;your-hf-id&gt;/&lt;dataset-name&gt; \
-  --repo-type dataset \
-  --local-dir /path/to/local/dataset</code></pre>
+                    <h4 class="doc-subheading">Sensor Design</h4>
+                    <div class="doc-img-wrap">
+                        <img src="imgs/image2.png" alt="DuoTact Sensor Design" class="doc-img">
+                    </div>
+                    <ul class="doc-list">
+                        <li><strong>TPU Frame:</strong> Flexible metamaterial structure for shape adaptation.</li>
+                        <li><strong>Contact Layer:</strong> A multi-layer structure consisting of: a 1.6-mm-thick transparent PVC film to support the contact layer; a transparent silicone gel base deforming to reveal local contact conditions; a reflective layer; and a black coating overlay.</li>
+                        <li><strong>Black Rubber Sheet:</strong> Heat-sealed on both sides of the TPU frame to prevent ambient light interference.</li>
+                        <li><strong>LED Strip Lights:</strong> Programmable LED strip lights integrated to capture contact geometry details.</li>
+                        <li><strong>RGB Camera:</strong> 640×480 resolution at 30 fps for internal monitoring.</li>
+                    </ul>
                 </section>
 
-                <!-- Visualization -->
-                <section id="visualization" class="doc-section">
+                <!-- Dataset Format -->
+                <section id="dataset-format" class="doc-section">
                     <h2 class="doc-heading">
-                        <span class="heading-icon">🔍</span>
-                        Visualization
+                        <span class="heading-icon">📦</span>
+                        Dataset Format
                     </h2>
                     <p class="doc-paragraph">
-                        We use <a href="https://rerun.io" target="_blank" rel="noreferrer">Rerun</a> for dataset visualization —
-                        an open-source tool for logging and replaying multimodal robot data including camera streams,
-                        joint states and action trajectories.
+                        Our LeRobot dataset includes four types of information: visual images, tactile images, proprioceptive state, action trajectories, and language prompts. The dict keys and formats for each modality are listed below.
                     </p>
 
-                    <h4 class="doc-subheading">Install Rerun</h4>
-<pre><code>pip install rerun-sdk</code></pre>
-
-                    <h4 class="doc-subheading">Open a recorded .rrd file</h4>
-<pre><code>rerun output.rrd</code></pre>
-
-                    <h4 class="doc-subheading">View in browser (no installation)</h4>
-                    <p class="doc-paragraph">
-                        Rerun also provides a web viewer. Visit
-                        <a href="https://app.rerun.io" target="_blank" rel="noreferrer">app.rerun.io</a>
-                        and open a local <code>.rrd</code> file directly in the browser.
-                    </p>
-
-                    <div class="doc-note">
-                        Make sure your <code>rerun-sdk</code> version matches the Rerun Viewer version —
-                        the data format is not stable across releases.
-                        See the <a href="https://www.rerun.io/docs/getting-started/installing-viewer" target="_blank" rel="noreferrer">official installation guide</a> for details.
+                    <div class="doc-table-wrap">
+                        <table class="doc-table">
+                            <thead>
+                                <tr>
+                                    <th>Key</th>
+                                    <th>Description</th>
+                                    <th>Shape</th>
+                                    <th>Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>observation.images.camera0</code></td>
+                                    <td>Left wrist camera</td>
+                                    <td>(224, 224, 3)</td>
+                                    <td>Fisheye camera</td>
+                                </tr>
+                                <tr>
+                                    <td><code>observation.images.camera1</code></td>
+                                    <td>Right wrist camera</td>
+                                    <td>(224, 224, 3)</td>
+                                    <td>Fisheye camera</td>
+                                </tr>
+                                <tr>
+                                    <td><code>observation.images.tactile_left_0</code></td>
+                                    <td>Left hand — left tactile sensor</td>
+                                    <td>(224, 224, 3)</td>
+                                    <td>Planar camera</td>
+                                </tr>
+                                <tr>
+                                    <td><code>observation.images.tactile_right_0</code></td>
+                                    <td>Left hand — right tactile sensor</td>
+                                    <td>(224, 224, 3)</td>
+                                    <td>Planar camera</td>
+                                </tr>
+                                <tr>
+                                    <td><code>observation.images.tactile_left_1</code></td>
+                                    <td>Right hand — left tactile sensor</td>
+                                    <td>(224, 224, 3)</td>
+                                    <td>Planar camera</td>
+                                </tr>
+                                <tr>
+                                    <td><code>observation.images.tactile_right_1</code></td>
+                                    <td>Right hand — right tactile sensor</td>
+                                    <td>(224, 224, 3)</td>
+                                    <td>Planar camera</td>
+                                </tr>
+                                <tr>
+                                    <td><code>observation.state</code></td>
+                                    <td>Proprioceptive state</td>
+                                    <td>(20,)</td>
+                                    <td>Dims 0–5: left hand 6-DoF pose (x, y, z, rx, ry, rz); 6: left gripper width; 7–12: right hand 6-DoF pose; 13: right gripper width; 14–19: right hand pose relative to left hand</td>
+                                </tr>
+                                <tr>
+                                    <td><code>actions</code></td>
+                                    <td>Action trajectory</td>
+                                    <td>(20,)</td>
+                                    <td>Dims 0–8: left hand 9-DoF delta pose ((x, y, z) + first two columns of rotation matrix, i.e. r00, r10, r20, r01, r11, r21); 9: left gripper width; 10–18: right hand 9-DoF delta pose; 19: right gripper width</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </section>
 
-                <!-- Deploy -->
-                <section id="deploy" class="doc-section">
-                    <h2 class="doc-heading">
-                        <span class="heading-icon">🚀</span>
-                        Deploy
-                    </h2>
-                    <p class="doc-paragraph">
-                        openpi supports real-robot deployment via a WebSocket policy server.
-                        The robot client sends observations to the server and receives action chunks in return.
-                        Full details are in the <a href="https://github.com/Physical-Intelligence/openpi/blob/main/docs/remote_inference.md" target="_blank" rel="noreferrer">openpi remote inference guide</a>.
-                    </p>
-
-                    <h4 class="doc-subheading">1. Start the policy server</h4>
-<pre><code>python scripts/serve_policy.py \
-  --config &lt;your-config&gt; \
-  --checkpoint-dir checkpoints/&lt;your-config&gt;/&lt;step&gt;</code></pre>
-                    <p class="doc-paragraph">The server listens on <code>localhost:8000</code> by default.</p>
-
-                    <h4 class="doc-subheading">2. Connect your robot client</h4>
-                    <p class="doc-paragraph">
-                        On the robot side, use <code>WebsocketClientPolicy</code> from openpi to query the policy server.
-                        Pass the current observation dict and receive the predicted action chunk:
-                    </p>
-<pre><code>from openpi_client import WebsocketClientPolicy
-
-policy = WebsocketClientPolicy(host="localhost", port=8000)
-action_chunk = policy.infer(obs_dict)</code></pre>
-
-                    <div class="doc-callout">
-                        <strong>Before deploying, verify:</strong>
-                        <ul class="doc-list" style="margin-top: 8px;">
-                            <li>The observation dict keys and dimensions match those used during training.</li>
-                            <li>The normalisation stats used at inference correspond to the same dataset used for training.</li>
-                            <li><code>single_arm_mode</code> and state configuration match the checkpoint.</li>
-                        </ul>
-                    </div>
-
-                    <h4 class="doc-subheading">Reference examples</h4>
-                    <p class="doc-paragraph">
-                        See <a href="https://github.com/Physical-Intelligence/openpi/blob/main/examples/aloha_real/README.md" target="_blank" rel="noreferrer">examples/aloha_real</a>
-                        in the openpi repository for a complete real-robot deployment walkthrough.
-                    </p>
-                </section>
 
 
             </div>
