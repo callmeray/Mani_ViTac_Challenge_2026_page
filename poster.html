@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ManiSkill-ViTac Challenge 2026 — Poster</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  /* A2 portrait: 420mm × 594mm */
+  html, body {
+    width: 420mm;
+    min-height: 594mm;
+    font-family: 'Inter', Arial, sans-serif;
+    background: #0d0a1e;
+    color: #fff;
+  }
+
+  .poster {
+    width: 420mm;
+    min-height: 594mm;
+    background: linear-gradient(160deg, #0d0a1e 0%, #1a0a3e 40%, #0d1a3e 100%);
+    display: flex;
+    flex-direction: column;
+    padding: 10mm 12mm 8mm;
+    gap: 5mm;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* decorative blobs */
+  .poster::before {
+    content: '';
+    position: absolute;
+    top: -60mm; left: -40mm;
+    width: 200mm; height: 200mm;
+    background: radial-gradient(circle, rgba(100,60,200,0.25) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .poster::after {
+    content: '';
+    position: absolute;
+    bottom: 40mm; right: -50mm;
+    width: 180mm; height: 180mm;
+    background: radial-gradient(circle, rgba(0,150,255,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* ── header ── */
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 0.5mm solid rgba(255,255,255,0.15);
+    padding-bottom: 4mm;
+  }
+  .header-logos {
+    display: flex;
+    align-items: center;
+    gap: 4mm;
+  }
+  .logo-badge {
+    background: rgba(255,255,255,0.08);
+    border: 0.3mm solid rgba(255,255,255,0.2);
+    border-radius: 2mm;
+    padding: 1.5mm 3mm;
+    font-size: 5.5pt;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    line-height: 1.3;
+    text-align: center;
+  }
+  .logo-badge .main { font-size: 8pt; color: #a78bfa; }
+  .logo-badge .sub  { font-size: 5pt; color: #94a3b8; }
+  .cvpr-badge {
+    background: linear-gradient(135deg, #7c3aed, #2563eb);
+    border-radius: 2mm;
+    padding: 1.5mm 3.5mm;
+    font-size: 7pt;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+  }
+
+  .header-title-block { text-align: center; flex: 1; padding: 0 4mm; }
+  .header-abbr {
+    font-size: 26pt;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    background: linear-gradient(90deg, #a78bfa, #60a5fa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+  }
+  .header-fullname {
+    font-size: 7.5pt;
+    color: #cbd5e1;
+    font-weight: 500;
+    margin-top: 1mm;
+    line-height: 1.4;
+  }
+
+  .header-qr {
+    width: 22mm; height: 22mm;
+    background: #fff;
+    border-radius: 2mm;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .header-qr img { width: 100%; height: 100%; border-radius: 2mm; object-fit: cover; }
+  .qr-placeholder {
+    width: 20mm; height: 20mm;
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    grid-template-rows: repeat(7,1fr);
+    gap: 0.4mm;
+    padding: 1mm;
+  }
+  .qr-placeholder span {
+    background: #000;
+    border-radius: 0.2mm;
+  }
+
+  /* ── hero band ── */
+  .hero-band {
+    background: linear-gradient(135deg, #5b21b6 0%, #1d4ed8 100%);
+    border-radius: 3mm;
+    padding: 5mm 7mm;
+    display: flex;
+    align-items: center;
+    gap: 6mm;
+  }
+  .trophy {
+    font-size: 32pt;
+    flex-shrink: 0;
+    filter: drop-shadow(0 0 4mm rgba(250,204,21,0.6));
+  }
+  .hero-text { flex: 1; }
+  .hero-cta { font-size: 9pt; color: #fde68a; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; }
+  .hero-prize { font-size: 34pt; font-weight: 900; line-height: 1; color: #fbbf24; letter-spacing: -0.02em; }
+  .hero-prize-sub { font-size: 8pt; color: #e2e8f0; margin-top: 0.5mm; }
+  .hero-info { text-align: right; flex-shrink: 0; }
+  .hero-info-item { font-size: 7pt; color: #cbd5e1; line-height: 1.8; }
+  .hero-info-item strong { color: #fff; font-weight: 700; }
+
+  /* ── section title ── */
+  .sec-title {
+    font-size: 10pt;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #a78bfa;
+    margin-bottom: 2.5mm;
+    display: flex;
+    align-items: center;
+    gap: 2mm;
+  }
+  .sec-title::after {
+    content: '';
+    flex: 1;
+    height: 0.3mm;
+    background: linear-gradient(90deg, rgba(167,139,250,0.5), transparent);
+  }
+
+  /* ── overview ── */
+  .overview-text {
+    font-size: 7.5pt;
+    line-height: 1.65;
+    color: #cbd5e1;
+    column-count: 2;
+    column-gap: 6mm;
+  }
+  .overview-text strong { color: #e2e8f0; }
+
+  /* ── tasks ── */
+  .tasks-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4mm;
+  }
+  .task-card {
+    background: rgba(255,255,255,0.05);
+    border: 0.3mm solid rgba(255,255,255,0.1);
+    border-radius: 3mm;
+    overflow: hidden;
+  }
+  .task-card-header {
+    padding: 2.5mm 4mm;
+    display: flex;
+    align-items: center;
+    gap: 2.5mm;
+  }
+  .task1-header { background: linear-gradient(135deg, rgba(124,58,237,0.6), rgba(59,130,246,0.4)); }
+  .task2-header { background: linear-gradient(135deg, rgba(220,38,38,0.5), rgba(234,88,12,0.4)); }
+  .task-num {
+    background: rgba(255,255,255,0.15);
+    border-radius: 1.5mm;
+    padding: 0.5mm 2mm;
+    font-size: 6pt;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .task-name { font-size: 9.5pt; font-weight: 800; }
+  .task-card-body { padding: 3mm 4mm; }
+  .task-desc { font-size: 7pt; color: #94a3b8; line-height: 1.6; margin-bottom: 2mm; }
+  .task-points { list-style: none; display: flex; flex-direction: column; gap: 0.8mm; }
+  .task-points li {
+    font-size: 6.5pt;
+    color: #cbd5e1;
+    padding-left: 3mm;
+    position: relative;
+    line-height: 1.5;
+  }
+  .task-points li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: #a78bfa;
+    font-weight: 700;
+  }
+  .task-img-wrap {
+    height: 28mm;
+    overflow: hidden;
+    background: rgba(0,0,0,0.3);
+  }
+  .task-img-wrap img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: 0.85;
+  }
+  .task-img-placeholder {
+    width: 100%; height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20pt;
+    background: linear-gradient(135deg, rgba(100,60,180,0.3), rgba(30,80,160,0.3));
+  }
+
+  /* ── three columns: format / awards / timeline ── */
+  .bottom-cols {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr 1fr;
+    gap: 4mm;
+    align-items: start;
+  }
+
+  /* format */
+  .stage-row {
+    display: flex;
+    gap: 2.5mm;
+    align-items: flex-start;
+    padding: 2.5mm 0;
+    border-bottom: 0.3mm solid rgba(255,255,255,0.07);
+  }
+  .stage-row:last-child { border-bottom: none; }
+  .stage-dot {
+    width: 5mm; height: 5mm;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 0.5mm;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 6pt;
+    font-weight: 800;
+  }
+  .stage-dot-1 { background: linear-gradient(135deg, #7c3aed, #2563eb); }
+  .stage-dot-2 { background: linear-gradient(135deg, #059669, #0284c7); }
+  .stage-body-text {}
+  .stage-label { font-size: 5.5pt; color: #a78bfa; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
+  .stage-name { font-size: 8pt; font-weight: 700; color: #f1f5f9; margin: 0.5mm 0; }
+  .stage-date { font-size: 6pt; color: #64748b; }
+  .stage-desc { font-size: 6.5pt; color: #94a3b8; line-height: 1.55; margin-top: 0.8mm; }
+
+  /* awards */
+  .award-row {
+    display: flex;
+    align-items: center;
+    gap: 2.5mm;
+    padding: 2.5mm 3mm;
+    border-radius: 2mm;
+    margin-bottom: 2mm;
+  }
+  .award-gold   { background: linear-gradient(135deg, rgba(250,204,21,0.15), rgba(245,158,11,0.1)); border: 0.3mm solid rgba(250,204,21,0.3); }
+  .award-silver { background: linear-gradient(135deg, rgba(148,163,184,0.12), rgba(100,116,139,0.08)); border: 0.3mm solid rgba(148,163,184,0.2); }
+  .award-bronze { background: linear-gradient(135deg, rgba(205,127,50,0.12), rgba(180,100,30,0.08)); border: 0.3mm solid rgba(205,127,50,0.2); }
+  .award-icon { font-size: 14pt; flex-shrink: 0; }
+  .award-info { flex: 1; }
+  .award-place { font-size: 7pt; font-weight: 700; color: #e2e8f0; }
+  .award-count { font-size: 6pt; color: #94a3b8; }
+  .award-amount { font-size: 12pt; font-weight: 900; }
+  .award-gold   .award-amount { color: #fbbf24; }
+  .award-silver .award-amount { color: #cbd5e1; }
+  .award-bronze .award-amount { color: #c8965a; }
+
+  .award-note {
+    font-size: 6.5pt;
+    color: #64748b;
+    line-height: 1.5;
+    padding: 2mm 3mm;
+    border-left: 0.8mm solid rgba(167,139,250,0.4);
+    margin-top: 1mm;
+  }
+
+  /* timeline */
+  .tl-item {
+    display: flex;
+    gap: 2.5mm;
+    padding: 1.5mm 0;
+    position: relative;
+  }
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: 3.5mm;
+    top: 5mm;
+    bottom: -1.5mm;
+    width: 0.3mm;
+    background: rgba(255,255,255,0.1);
+  }
+  .tl-item:last-child::before { display: none; }
+  .tl-dot {
+    width: 3mm; height: 3mm;
+    border-radius: 50%;
+    background: #7c3aed;
+    flex-shrink: 0;
+    margin-top: 1.5mm;
+    border: 0.4mm solid rgba(167,139,250,0.5);
+  }
+  .tl-dot.done { background: #059669; }
+  .tl-date { font-size: 5.5pt; color: #7c3aed; font-weight: 700; white-space: nowrap; width: 22mm; flex-shrink: 0; padding-top: 0.5mm; }
+  .tl-text { font-size: 6.5pt; color: #cbd5e1; line-height: 1.5; }
+  .tl-text strong { color: #f1f5f9; font-weight: 700; }
+
+  /* ── platform ── */
+  .platform-band {
+    background: rgba(255,255,255,0.04);
+    border: 0.3mm solid rgba(255,255,255,0.1);
+    border-radius: 3mm;
+    padding: 3.5mm 5mm;
+    display: flex;
+    gap: 6mm;
+    align-items: center;
+  }
+  .platform-text { flex: 1; }
+  .platform-title { font-size: 8pt; font-weight: 800; color: #e2e8f0; margin-bottom: 1.5mm; }
+  .platform-desc { font-size: 6.5pt; color: #94a3b8; line-height: 1.6; }
+  .platform-tags { display: flex; flex-wrap: wrap; gap: 1.5mm; margin-top: 2mm; }
+  .ptag {
+    background: rgba(124,58,237,0.2);
+    border: 0.3mm solid rgba(124,58,237,0.4);
+    border-radius: 1mm;
+    padding: 0.5mm 2mm;
+    font-size: 5.5pt;
+    color: #a78bfa;
+    font-weight: 600;
+  }
+  .platform-imgs {
+    display: flex;
+    gap: 2mm;
+    flex-shrink: 0;
+  }
+  .platform-img-box {
+    width: 28mm; height: 22mm;
+    border-radius: 2mm;
+    overflow: hidden;
+    background: rgba(0,0,0,0.3);
+  }
+  .platform-img-box img { width: 100%; height: 100%; object-fit: cover; opacity: 0.85; }
+  .platform-img-placeholder {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14pt;
+    background: linear-gradient(135deg, rgba(80,40,160,0.4), rgba(20,60,140,0.4));
+  }
+
+  /* ── organizers ── */
+  .org-row {
+    display: flex;
+    align-items: center;
+    gap: 4mm;
+    flex-wrap: wrap;
+  }
+  .org-label { font-size: 6pt; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; flex-shrink: 0; }
+  .org-name {
+    font-size: 6.5pt;
+    color: #94a3b8;
+    background: rgba(255,255,255,0.05);
+    border: 0.3mm solid rgba(255,255,255,0.1);
+    border-radius: 1.5mm;
+    padding: 0.8mm 2.5mm;
+  }
+
+  /* ── footer ── */
+  .footer {
+    border-top: 0.3mm solid rgba(255,255,255,0.1);
+    padding-top: 3mm;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-url {
+    font-size: 8pt;
+    font-weight: 700;
+    color: #a78bfa;
+  }
+  .footer-contact { font-size: 6pt; color: #64748b; text-align: right; line-height: 1.7; }
+
+  @media print {
+    html, body { width: 420mm; }
+    .poster { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="poster">
+
+  <!-- ── HEADER ── -->
+  <div class="header">
+    <div class="header-logos">
+      <div class="logo-badge">
+        <div class="main">ManiSkill</div>
+        <div class="sub">Simulation Platform</div>
+      </div>
+      <div class="logo-badge">
+        <div class="main">ViTaMIn-B</div>
+        <div class="sub">Bimanual Platform</div>
+      </div>
+      <div class="cvpr-badge">CVPR 2026</div>
+    </div>
+
+    <div class="header-title-block">
+      <div class="header-abbr">ManiSkill-ViTac</div>
+      <div class="header-fullname">Real-World Language-Guided Bimanual Vision-Tactile Manipulation Challenge 2026</div>
+    </div>
+
+    <div class="header-qr">
+      <!-- Simple SVG QR-like pattern as placeholder -->
+      <svg width="22mm" height="22mm" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="display:block">
+        <rect width="80" height="80" fill="white"/>
+        <!-- TL corner -->
+        <rect x="5" y="5" width="25" height="25" fill="none" stroke="black" stroke-width="4"/>
+        <rect x="11" y="11" width="13" height="13" fill="black"/>
+        <!-- TR corner -->
+        <rect x="50" y="5" width="25" height="25" fill="none" stroke="black" stroke-width="4"/>
+        <rect x="56" y="11" width="13" height="13" fill="black"/>
+        <!-- BL corner -->
+        <rect x="5" y="50" width="25" height="25" fill="none" stroke="black" stroke-width="4"/>
+        <rect x="11" y="56" width="13" height="13" fill="black"/>
+        <!-- data dots -->
+        <rect x="35" y="5"  width="5" height="5" fill="black"/>
+        <rect x="42" y="5"  width="5" height="5" fill="black"/>
+        <rect x="35" y="12" width="5" height="5" fill="black"/>
+        <rect x="42" y="19" width="5" height="5" fill="black"/>
+        <rect x="35" y="35" width="5" height="5" fill="black"/>
+        <rect x="42" y="35" width="5" height="5" fill="black"/>
+        <rect x="50" y="35" width="5" height="5" fill="black"/>
+        <rect x="57" y="35" width="5" height="5" fill="black"/>
+        <rect x="64" y="35" width="5" height="5" fill="black"/>
+        <rect x="35" y="42" width="5" height="5" fill="black"/>
+        <rect x="57" y="42" width="5" height="5" fill="black"/>
+        <rect x="35" y="50" width="5" height="5" fill="black"/>
+        <rect x="42" y="57" width="5" height="5" fill="black"/>
+        <rect x="50" y="50" width="5" height="5" fill="black"/>
+        <rect x="57" y="64" width="5" height="5" fill="black"/>
+        <rect x="64" y="57" width="5" height="5" fill="black"/>
+        <rect x="5"  y="35" width="5" height="5" fill="black"/>
+        <rect x="12" y="42" width="5" height="5" fill="black"/>
+        <rect x="5"  y="42" width="5" height="5" fill="black"/>
+        <rect x="19" y="35" width="5" height="5" fill="black"/>
+        <rect x="26" y="42" width="5" height="5" fill="black"/>
+        <text x="40" y="76" font-family="Arial" font-size="5" text-anchor="middle" fill="#555">callmeray.github.io</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- ── HERO BAND ── -->
+  <div class="hero-band">
+    <div class="trophy">🏆</div>
+    <div class="hero-text">
+      <div class="hero-cta">Call for Participation</div>
+      <div class="hero-prize">$6,500 USD</div>
+      <div class="hero-prize-sub">Total prize awards &nbsp;·&nbsp; Open to all researchers and students worldwide</div>
+    </div>
+    <div class="hero-info">
+      <div class="hero-info-item"><strong>Co-located with</strong> CVPR 2026</div>
+      <div class="hero-info-item"><strong>Award Ceremony</strong> Jun 3–4, 2026</div>
+      <div class="hero-info-item"><strong>Location</strong> Denver, CO, USA</div>
+      <div class="hero-info-item"><strong>Registration</strong> by May 1, 2026</div>
+      <div class="hero-info-item"><strong>Contact</strong> maniskill.vitac@gmail.com</div>
+    </div>
+  </div>
+
+  <!-- ── OVERVIEW ── -->
+  <div>
+    <div class="sec-title">Overview</div>
+    <div class="overview-text">
+      The 2024 and 2025 editions built a simulation-based sim-to-real pipeline for tactile manipulation. However, many real-world scenarios — transparent objects, liquids, granular materials and fragile solids — remain extremely difficult to simulate.
+      <strong>ManiSkill-ViTac Challenge 2026</strong> addresses this gap by providing real-world bimanual demonstration data collected with the <strong>ViTaMIn-B2</strong> platform, featuring synchronized wrist cameras and DuoTact visuo-tactile sensors.
+      Participants train <strong>language-conditioned visuo-tactile policies</strong> directly from these demonstrations and are evaluated on the same physical hardware, advancing research toward <strong>TVLA (Tactile-Vision-Language-Action)</strong> models — unifying tactile sensing, visual perception and language understanding within a single action policy.
+    </div>
+  </div>
+
+  <!-- ── TASKS ── -->
+  <div>
+    <div class="sec-title">Challenge Tasks</div>
+    <div class="tasks-grid">
+
+      <div class="task-card">
+        <div class="task-img-wrap">
+          <img src="task1.mp4" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" style="display:none">
+          <img src="imgs/image1.png" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="task-img-placeholder" style="display:none">🧪</div>
+        </div>
+        <div class="task-card-header task1-header">
+          <span class="task-num">Task 1</span>
+          <span class="task-name">Test Tube Cleaning</span>
+        </div>
+        <div class="task-card-body">
+          <div class="task-desc">Pick up glass test tubes, place them into a rack, and clean the tube interior with a brush. Tactile sensing is critical for compliant grasping of transparent tubes.</div>
+          <ul class="task-points">
+            <li>Test tube pick-and-place and rack insertion</li>
+            <li>Internal cleaning with a brush</li>
+            <li>Generalization across tube sizes and rack configurations</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="task-card">
+        <div class="task-img-wrap">
+          <img src="imgs/image2.png" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="task-img-placeholder" style="display:none">⚗️</div>
+        </div>
+        <div class="task-card-header task2-header">
+          <span class="task-num">Task 2</span>
+          <span class="task-name">Grinding</span>
+        </div>
+        <div class="task-card-body">
+          <div class="task-desc">Grind materials in a mortar using a pestle. Bimanual coordination and contact force regulation, with tactile feedback as the primary control signal.</div>
+          <ul class="task-points">
+            <li>Force-regulated grinding with mortar and pestle</li>
+            <li>Bimanual coordination under contact-rich conditions</li>
+            <li>Evaluation on grinding quality and task completion</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── PLATFORM ── -->
+  <div>
+    <div class="sec-title">ViTaMIn-B2 Hardware Platform</div>
+    <div class="platform-band">
+      <div class="platform-text">
+        <div class="platform-title">Bimanual Visuo-Tactile Data Collection System</div>
+        <div class="platform-desc">
+          All demonstration data is collected using <strong style="color:#e2e8f0">ViTaMIn-B2</strong>, an updated bimanual teleoperation system featuring synchronized wrist cameras for visual observation, Meta Quest 3 controllers for 6-DoF bimanual pose acquisition, and DuoTact visuo-tactile sensors on each hand. A foot pedal triggers recording start/end, leaving both hands free during operation.
+        </div>
+        <div class="platform-tags">
+          <span class="ptag">Bimanual Teleoperation</span>
+          <span class="ptag">DuoTact Tactile Sensors</span>
+          <span class="ptag">Synchronized Cameras</span>
+          <span class="ptag">Meta Quest 3</span>
+          <span class="ptag">6-DoF Pose</span>
+          <span class="ptag">Real-World Data</span>
+        </div>
+      </div>
+      <div class="platform-imgs">
+        <div class="platform-img-box">
+          <img src="imgs/image1.png" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="platform-img-placeholder" style="display:none">🤖</div>
+        </div>
+        <div class="platform-img-box">
+          <img src="imgs/image2.png" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="platform-img-placeholder" style="display:none">👁️</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 3-COL: FORMAT / AWARDS / TIMELINE ── -->
+  <div class="bottom-cols">
+
+    <!-- Challenge Format -->
+    <div>
+      <div class="sec-title">Challenge Format</div>
+      <div class="stage-row">
+        <div class="stage-dot stage-dot-1">1</div>
+        <div class="stage-body-text">
+          <div class="stage-label">Stage 1</div>
+          <div class="stage-name">Registration & Screening</div>
+          <div class="stage-date">Feb. — Apr. 2026</div>
+          <div class="stage-desc">Sample data released mid-April. Teams submit a 2–4 page technical brief by May 1 covering their approach. A subset advances to Stage 2 based on brief review.</div>
+        </div>
+      </div>
+      <div class="stage-row">
+        <div class="stage-dot stage-dot-2">2</div>
+        <div class="stage-body-text">
+          <div class="stage-label">Stage 2</div>
+          <div class="stage-name">Real-World Robot Evaluation</div>
+          <div class="stage-date">May — Jun. 2026</div>
+          <div class="stage-desc">Full dataset publicly released. Teams train and submit policies for evaluation on physical robots. Multiple submission attempts allowed. Final score = Task 1 + Task 2 from best submission.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Awards -->
+    <div>
+      <div class="sec-title">Awards</div>
+      <div class="award-row award-gold">
+        <div class="award-icon">🥇</div>
+        <div class="award-info">
+          <div class="award-place">1st Place</div>
+          <div class="award-count">× 1 team</div>
+        </div>
+        <div class="award-amount">$3,000</div>
+      </div>
+      <div class="award-row award-silver">
+        <div class="award-icon">🥈</div>
+        <div class="award-info">
+          <div class="award-place">2nd Place</div>
+          <div class="award-count">× 2 teams</div>
+        </div>
+        <div class="award-amount">$1,000</div>
+      </div>
+      <div class="award-row award-bronze">
+        <div class="award-icon">🥉</div>
+        <div class="award-info">
+          <div class="award-place">3rd Place</div>
+          <div class="award-count">× 3 teams</div>
+        </div>
+        <div class="award-amount">$500</div>
+      </div>
+      <div class="award-note">
+        The 1st place team will be invited to present at the CVPR 2026 Embodied AI Workshop in Denver.
+      </div>
+    </div>
+
+    <!-- Timeline -->
+    <div>
+      <div class="sec-title">Timeline</div>
+      <div class="tl-item">
+        <div class="tl-dot done"></div>
+        <div class="tl-date">Jan 25, 2026</div>
+        <div class="tl-text"><strong>Website Released</strong></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot done"></div>
+        <div class="tl-date">Jan 26, 2026</div>
+        <div class="tl-text"><strong>CVPR 2026 Workshop Accepted</strong></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">Mid-Apr 2026</div>
+        <div class="tl-text"><strong>Sample Data &amp; Tools Release</strong><br>Visualization tools provided</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">May 1, 2026</div>
+        <div class="tl-text"><strong>Technical Brief Deadline</strong></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">May 1, 2026</div>
+        <div class="tl-text"><strong>Full Dataset &amp; Baseline Release</strong></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">Jun 1, 2026</div>
+        <div class="tl-text"><strong>Final Rankings Announced</strong></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">Jun 3–4, 2026</div>
+        <div class="tl-text"><strong>Award Ceremony @ CVPR 2026</strong><br>Denver, CO, USA</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── ORGANIZERS ── -->
+  <div>
+    <div class="sec-title">Organizers</div>
+    <div class="org-row">
+      <span class="org-label">Faculty</span>
+      <span class="org-name">Rui Chen · THU</span>
+      <span class="org-name">Shaowei Cui · CASIA</span>
+      <span class="org-name">Jing Xu · THU</span>
+      <span class="org-label" style="margin-left:2mm">Students</span>
+      <span class="org-name">Chaoyi Liu · THU</span>
+      <span class="org-name">Rongxuan Zhang · NEU</span>
+      <span class="org-name">Kaiyue Chen · XJTLU</span>
+      <span class="org-name">Junlai Li · SJTU</span>
+      <span class="org-name">Chenrui Zhang · NUS</span>
+      <span class="org-name">Chuanyu Li · THU</span>
+      <span class="org-name">Zhongyu Chen · ZJU</span>
+      <span class="org-name">Lishun Zhou · Tongji</span>
+      <span class="org-name">Wenxuan Ma · CASIA</span>
+    </div>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <div class="footer">
+    <div class="footer-url">callmeray.github.io/Mani_ViTac_Challenge_2026_page</div>
+    <div style="font-size:6.5pt; color:#64748b; text-align:center">
+      Join Discord &nbsp;·&nbsp; discord.com/invite/YD7xBydau4
+    </div>
+    <div class="footer-contact">
+      maniskill.vitac@gmail.com<br>
+      © ManiSkill-ViTac Challenge 2026
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
