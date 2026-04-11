@@ -213,13 +213,13 @@
                         <article class="task-slide active" data-task="0">
                             <span class="task-tag">Task 1</span>
                             <h3>Test Tube Cleaning</h3>
-                            <p>Pick up glass test tubes, place them into a rack, and clean the tube interior with a brush. Tactile sensing is critical for compliant grasping of transparent tubes and precise rack insertion.</p>
                             <ul class="task-points">
-                                <li>Test tube pick-and-place and rack insertion</li>
-                                <li>Internal tube cleaning with a brush</li>
-                                <li>Generalization across tube sizes and rack configurations</li>
-                                <li>Detailed evaluation metrics will be provided at the start of Stage 2</li>
+                                <li><strong>Long-horizon bimanual task</strong> — color identification → grasp → rack insertion → brush cleaning</li>
+                                <li><strong>Tactile-guided compliant control</strong> for transparent tube grasping</li>
+                                <li>Probes tactile manipulation and language grounding over extended horizons</li>
+                                <li>Transparent tubes make <strong>pure-vision grasping unreliable</strong> — tactile sensing resolves ambiguity and ensures stable contact</li>
                             </ul>
+                            <p><em>Language instruction: &ldquo;Pick and clean the color-matched test tubes&rdquo;</em></p>
                             <video autoplay muted loop playsinline class="task-video">
                                 <source src="https://media.githubusercontent.com/media/callmeray/Mani_ViTac_Challenge_2026_page/main/task1.mp4" type="video/mp4">
                             </video>
@@ -229,13 +229,12 @@
                         <article class="task-slide" data-task="1">
                             <span class="task-tag">Task 2</span>
                             <h3>Grinding</h3>
-                            <p>Grind materials in a mortar using a pestle. The task requires bimanual coordination and contact force regulation, with tactile feedback serving as the primary control signal.</p>
                             <ul class="task-points">
-                                <li>Force-regulated grinding with mortar and pestle</li>
-                                <li>Bimanual coordination under contact-rich conditions</li>
-                                <li>Evaluation on grinding quality and task completion</li>
-                                <li>Detailed evaluation metrics will be provided at the start of Stage 2</li>
+                                <li><strong>Long-horizon bimanual task</strong> — material selection → placement → sustained grinding</li>
+                                <li>Tests <strong>multi-step language-conditioned reasoning</strong> and material generalization</li>
+                                <li><strong>Tactile sensing</strong> ensures stable contact force during grinding, preventing slippage and maintaining consistent quality</li>
                             </ul>
+                            <p><em>Language instruction: &ldquo;Grind the specified materials using the pestle&rdquo;</em></p>
                             <video autoplay muted loop playsinline class="task-video">
                                 <source src="https://media.githubusercontent.com/media/callmeray/Mani_ViTac_Challenge_2026_page/main/task2.mp4" type="video/mp4">
                             </video>
