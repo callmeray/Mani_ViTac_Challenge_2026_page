@@ -35,7 +35,7 @@
             </p>
             <div class="doc-hero-actions">
                 <a href="index.html#registration" class="btn btn-primary">Go to Registration</a>
-                <a href="https://github.com/chaoyiL/ManiSkill" target="_blank" rel="noreferrer" class="btn btn-primary">ManiSkill Code</a>
+                <a href="https://github.com/chaoyiL/ManiSkill" target="_blank" rel="noreferrer" class="btn btn-primary">Maniskill-vitac Code</a>
                 <a href="index.html#leaderboard" class="btn btn-secondary">View LeaderBoard</a>
             </div>
         </div>
@@ -108,6 +108,25 @@
                     <p class="doc-paragraph">
                         Sample data sets are available here:
                         <a href="https://cloud.tsinghua.edu.cn/d/0831b0fa9aed41c98e3b/" target="_blank" rel="noreferrer">Download sample data sets</a>.
+                    </p>
+                    <p class="doc-paragraph">
+                        Each dataset (<code>sample_clean</code>, <code>sample_smash</code>) is split into multiple 2.1 GB parts
+                        (<code>.part_aa</code>, <code>.part_ab</code>, ...). After downloading all parts of a dataset into the
+                        same folder, merge and extract them with:
+                    </p>
+                    <pre class="doc-code"><code># Linux / macOS
+cat sample_clean.part_* &gt; sample_clean.tar &amp;&amp; tar -xvf sample_clean.tar
+cat sample_smash.part_* &gt; sample_smash.tar &amp;&amp; tar -xvf sample_smash.tar
+
+# Windows (PowerShell)
+cmd /c "copy /b sample_clean.part_* sample_clean.tar"
+tar -xvf sample_clean.tar
+cmd /c "copy /b sample_smash.part_* sample_smash.tar"
+tar -xvf sample_smash.tar</code></pre>
+                    <p class="doc-paragraph">
+                        Make sure every part is fully downloaded before merging — a missing or truncated part will make the final
+                        archive fail to extract. If the archive is gzipped (<code>.tar.gz</code>), replace <code>tar -xvf</code>
+                        with <code>tar -xzvf</code>.
                     </p>
                     <p class="doc-paragraph">
                         Our LeRobot dataset includes four types of information: visual images, tactile images, proprioceptive state, action trajectories, and language prompts. The dict keys and formats for each modality are listed below.
