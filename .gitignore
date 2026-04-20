@@ -1,2 +1,8 @@
 *.DS_Store
 *.zarr.zip
+
+# IDE / AI tooling
+.claude/
+.codex/
+.vscode/
+.idea/
