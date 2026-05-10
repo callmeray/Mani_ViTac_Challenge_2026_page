@@ -2456,6 +2456,10 @@ body {
         gap: 2rem 1.5rem;
     }
 
+    .team-grid-faculty {
+        grid-template-columns: repeat(4, minmax(100px, 1fr));
+    }
+
     .member-avatar {
         width: 90px;
         height: 90px;
@@ -2518,6 +2522,10 @@ body {
     .team-grid {
         grid-template-columns: repeat(3, 1fr);
         gap: 1.5rem 1rem;
+    }
+
+    .team-grid-faculty {
+        grid-template-columns: repeat(4, 1fr);
     }
 
     .member-avatar {
