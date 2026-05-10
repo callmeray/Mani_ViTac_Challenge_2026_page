@@ -2280,8 +2280,8 @@ body {
 }
 
 .team-grid-faculty {
-    max-width: 630px;
-    grid-template-columns: repeat(3, minmax(140px, 1fr));
+    max-width: 840px;
+    grid-template-columns: repeat(4, minmax(140px, 1fr));
 }
 
 .team-member {
