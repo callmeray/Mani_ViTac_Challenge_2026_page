@@ -1999,6 +1999,8 @@ body {
 /* Iframe wrapper */
 .registration-form-wrap {
     background: #fff;
+    max-height: 640px;
+    overflow-y: auto;
 }
 
 .registration-form-wrap iframe {
@@ -2571,7 +2573,7 @@ body {
 }
 
 .baseline-video-wrap {
-    max-width: 860px;
+    max-width: 100%;
     margin: 0 auto;
 }
 
