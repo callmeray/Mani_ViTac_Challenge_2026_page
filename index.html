@@ -327,6 +327,23 @@
                 </div>
             </section>
 
+            <section class="baseline-video-section">
+                <h2 class="section-title" id="baseline">Smash Baseline</h2>
+                <p class="section-lead">Official baseline performance on the challenge tasks.</p>
+                <div class="baseline-video-wrap">
+                    <div class="video-responsive">
+                        <iframe
+                            id="baseline-yt"
+                            src="https://www.youtube.com/embed/mcvXAxWa6A8?enablejsapi=1&mute=1&loop=1&playlist=mcvXAxWa6A8"
+                            title="Smash Baseline Video"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+            </section>
+
             <section class="awards-section">
                 <h2 class="section-title" id="awards">Awards</h2>
                 <div class="awards-grid">
@@ -568,6 +585,27 @@
         </div>
     </footer>
 
+    <script>
+        function onYouTubeIframeAPIReady() {
+            var player = new YT.Player('baseline-yt', {
+                events: {
+                    onReady: function() {
+                        var observer = new IntersectionObserver(function(entries) {
+                            entries.forEach(function(entry) {
+                                if (entry.isIntersecting) {
+                                    player.playVideo();
+                                } else {
+                                    player.pauseVideo();
+                                }
+                            });
+                        }, { threshold: 0.4 });
+                        observer.observe(document.getElementById('baseline-yt'));
+                    }
+                }
+            });
+        }
+    </script>
+    <script src="https://www.youtube.com/iframe_api" async></script>
     <script src="news-indicator.js"></script>
     <script>
         function getRelativeTime(dateString) {
