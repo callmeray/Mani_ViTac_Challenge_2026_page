@@ -328,18 +328,34 @@
             </section>
 
             <section class="baseline-video-section">
-                <h2 class="section-title" id="baseline">Smash Baseline</h2>
+                <h2 class="section-title" id="baseline">Baselines</h2>
                 <p class="section-lead">Official baseline performance on the challenge tasks.</p>
                 <div class="baseline-video-wrap">
-                    <div class="video-responsive">
-                        <iframe
-                            id="baseline-yt"
-                            src="https://www.youtube.com/embed/mcvXAxWa6A8?enablejsapi=1&mute=1&loop=1&playlist=mcvXAxWa6A8"
-                            title="Smash Baseline Video"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen>
-                        </iframe>
+                    <div class="baseline-video-item">
+                        <div class="baseline-video-label">Task 1: Smash</div>
+                        <div class="video-responsive">
+                            <iframe
+                                id="baseline-yt"
+                                src="https://www.youtube.com/embed/mcvXAxWa6A8?enablejsapi=1&mute=1&loop=1&playlist=mcvXAxWa6A8"
+                                title="Smash Baseline Video"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+                    <div class="baseline-video-item">
+                        <div class="baseline-video-label">Task 2: Tube Brush</div>
+                        <div class="video-responsive">
+                            <iframe
+                                id="baseline-yt2"
+                                src="https://www.youtube.com/embed/ATUxTvr6Vn8?enablejsapi=1&mute=1&loop=1&playlist=ATUxTvr6Vn8"
+                                title="Tube Brush Baseline Video"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -586,23 +602,24 @@
     </footer>
 
     <script>
-        function onYouTubeIframeAPIReady() {
-            var player = new YT.Player('baseline-yt', {
+        function makeScrollPlayer(id) {
+            return new YT.Player(id, {
                 events: {
-                    onReady: function() {
+                    onReady: function(e) {
+                        var p = e.target;
                         var observer = new IntersectionObserver(function(entries) {
                             entries.forEach(function(entry) {
-                                if (entry.isIntersecting) {
-                                    player.playVideo();
-                                } else {
-                                    player.pauseVideo();
-                                }
+                                if (entry.isIntersecting) { p.playVideo(); } else { p.pauseVideo(); }
                             });
                         }, { threshold: 0.4 });
-                        observer.observe(document.getElementById('baseline-yt'));
+                        observer.observe(document.getElementById(id));
                     }
                 }
             });
+        }
+        function onYouTubeIframeAPIReady() {
+            makeScrollPlayer('baseline-yt');
+            makeScrollPlayer('baseline-yt2');
         }
     </script>
     <script src="https://www.youtube.com/iframe_api" async></script>
