@@ -1826,6 +1826,67 @@ body {
     background: rgba(239, 246, 255, 0.55);
 }
 
+.winners-podium {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 1.25rem;
+    margin-bottom: 2.5rem;
+}
+
+.winners-podium-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 1rem;
+    padding: 1.5rem 2rem;
+    min-width: 140px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    transition: transform 0.2s;
+}
+
+.winners-podium-item:hover {
+    transform: translateY(-4px);
+}
+
+.winners-podium-item.gold {
+    background: linear-gradient(145deg, #fff8e7, #fef3c7);
+    border: 2px solid #f5b942;
+    order: 2;
+    padding-bottom: 2.5rem;
+}
+
+.winners-podium-item.silver {
+    background: linear-gradient(145deg, #f8fafc, #f1f5f9);
+    border: 2px solid #d1d5db;
+    order: 1;
+}
+
+.winners-podium-item.bronze {
+    background: linear-gradient(145deg, #fff7f0, #fef3e8);
+    border: 2px solid #cd7c3a;
+    order: 3;
+}
+
+.winners-medal {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.winners-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #0f172a;
+    text-align: center;
+    margin-bottom: 0.25rem;
+}
+
+.winners-place {
+    font-size: 0.8rem;
+    color: #64748b;
+    font-weight: 500;
+}
+
 .leaderboard-metrics {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
